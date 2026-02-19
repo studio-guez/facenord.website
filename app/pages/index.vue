@@ -17,20 +17,11 @@
       <div>---</div>
 
       <template v-if="block.type === 'cards'">
-        <div>titre: {{block.content.titre}}</div>
-        <div>style: {{block.content.style}}</div>
-
-        <div v-for="card in block.content.cards" :key="card.text"
-             style="border: 1px solid #ccc; padding: 10px; margin: 10px 0"
-        >
-          <div>card.text: {{card.text}}</div>
-          <div>card.baseline: {{card.baseline}}</div>
-        </div>
+        <BlockCards :block="block" />
       </template>
 
       <template v-else-if="block.type === 'article_heading'">
-        <div>titre: {{block.content.titre}}</div>
-        <div v-html="block.content.text"></div>
+        <BlockArticleHeading :block="block" />
       </template>
 
       <template v-else-if="block.type === 'pages_list'">
@@ -52,7 +43,7 @@
 
 <script setup lang="ts">
 
-import type {CMS_API_Response} from "#shared/cms_api";
+import type {CMS_API_Response, Block} from "#shared/cms_api";
 
 type ResolvedPage = {
   id: string,
@@ -67,39 +58,7 @@ type FetchData = CMS_API_Response & {
       "title": string,
       "slug": string,
       "show_title": "true" | "false",
-      "content": (
-        {
-          "content": {
-            "titre": string,
-            "text": string
-          },
-          "id": string,
-          "isHidden": boolean,
-          "type": "article_heading"
-        } |
-        {
-          "content": {
-            "titre": string,
-            "style": "color" | "light",
-            "cards": {
-              "text": string,
-              "baseline": string,
-            }[]
-          },
-          "id": string,
-          "isHidden": boolean,
-          "type": "cards"
-        } |
-        {
-          "content": {
-            "titre": string,
-            "pages_liste": string[]
-          },
-          "id": string,
-          "isHidden": boolean,
-          "type": "pages_list"
-        }
-      )[],
+      "content": Block[],
       "pages_list_blocks": {
         "id": string,
         "resolved_pages": ResolvedPage[]

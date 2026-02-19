@@ -38,7 +38,7 @@
 		"result": {
 			"title": string,
 			"tags": Tag[],
-			"projects": Project[]
+			"projects": ProjectHeader[]
 		}
 	};
 

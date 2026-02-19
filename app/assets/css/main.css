@@ -80,7 +80,7 @@
 	text-transform: uppercase;
 }
 
-.li:before {
+.text li:before {
 	content: "↪ ";
 }
 
