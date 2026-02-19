@@ -20,4 +20,26 @@ type CMS_API_Image = {
 type MenuItem = {
   "title": string,
   "url": string
-};
+}
+
+type Tag = {
+  "id": string,
+  "title": string
+}
+
+type Image = {
+  "id": string,
+  "alt": string,
+  "url": string,
+  "width": number,
+  "height": number
+}
+
+type Project = {
+  "id": string,
+  "title": string,
+  "url": string,
+  "caption": string,
+  "image_cover": Image,
+  "tags": Tag[]
+}

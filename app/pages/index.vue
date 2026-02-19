@@ -2,8 +2,7 @@
   <Head>
     <Title>{{ siteTitle }} | {{ data?.result.home.title }}</Title>
   </Head>
-  <main class="v-index"
-  >
+  <main class="v-index">
     <p>{{ status }}</p>
 
     <h1>
