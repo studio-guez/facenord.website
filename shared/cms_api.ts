@@ -17,6 +17,13 @@ type CMS_API_Image = {
 	"width": number
 }
 
+type Page = {
+  id: string,
+  title: string,
+  slug: string,
+  url: string,
+}
+
 type MenuItem = {
 	"title": string,
 	"url": string
@@ -86,5 +93,17 @@ type BlockPagesList = {
 	},
 	"id": string,
 	"isHidden": boolean,
-	"type": "pages_list"
+	"type": "pages_list",
+	"resolved_pages": Page[]
+}
+
+type BlockGallery = {
+	"content": {
+		"titre": string,
+		"images": string[]
+	},
+	"id": string,
+	"isHidden": boolean,
+	"type": "pages_list",
+	"images": Image[]
 }
