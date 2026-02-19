@@ -31,6 +31,16 @@
         <div v-html="block.content.text"></div>
       </template>
 
+      <template v-else-if="block.type === 'pages_list'">
+        <div>titre: {{block.content.titre}}</div>
+        <div v-for="page in resolvedPagesMap.get(block.id)" :key="page.id"
+             style="border: 1px solid #aaa; padding: 6px; margin: 6px 0"
+        >
+          <div>title: {{page.title}}</div>
+          <div>slug: {{page.slug}}</div>
+          <div>url: {{page.url}}</div>
+        </div>
+      </template>
 
     </div>
 
@@ -42,13 +52,20 @@
 
 import type {CMS_API_Response} from "#shared/cms_api";
 
+type ResolvedPage = {
+  id: string,
+  title: string,
+  slug: string,
+  url: string,
+}
+
 type FetchData = CMS_API_Response & {
   "result": {
     "home": {
       "title": string,
       "slug": string,
       "show_title": "true" | "false",
-      "content": [
+      "content": (
         {
           "content": {
             "titre": string,
@@ -57,7 +74,7 @@ type FetchData = CMS_API_Response & {
           "id": string,
           "isHidden": boolean,
           "type": "article_heading"
-        },
+        } |
         {
           "content": {
             "titre": string,
@@ -70,17 +87,21 @@ type FetchData = CMS_API_Response & {
           "id": string,
           "isHidden": boolean,
           "type": "cards"
-        },
+        } |
         {
           "content": {
-            "titre": "",
-            "pages_liste": ["page://amoaiuetfz8vk7wi"]
+            "titre": string,
+            "pages_liste": string[]
           },
-          "id": "94a4a1d7-2c91-48aa-bf47-2781ab1fc947",
-          "isHidden": false,
+          "id": string,
+          "isHidden": boolean,
           "type": "pages_list"
         }
-      ],
+      )[],
+      "pages_list_blocks": {
+        "id": string,
+        "resolved_pages": ResolvedPage[]
+      }[],
       "image_cover": null
     }
   }
@@ -102,6 +123,21 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
           content: {
             query: 'page.content.content.toBlocks',
           },
+          pages_list_blocks: {
+            query: "page.content.content.toBlocks.filterBy('type', 'pages_list')",
+            select: {
+              id: true,
+              resolved_pages: {
+                query: 'block.content.pages_liste.toPages',
+                select: {
+                  id: true,
+                  title: true,
+                  slug: true,
+                  url: true,
+                }
+              }
+            }
+          },
           image_cover: {
             query: 'page.photo_equipe.toFiles.first',
             select: {
@@ -118,6 +154,15 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
       },
     }
   }
+})
+
+const resolvedPagesMap: ComputedRef<Map<string, ResolvedPage[]>> = computed(() => {
+  const map = new Map<string, ResolvedPage[]>()
+
+  for (const block of data.value?.result.home.pages_list_blocks ?? []) {
+    map.set(block.id, block.resolved_pages)
+  }
+  return map
 })
 
 </script>
