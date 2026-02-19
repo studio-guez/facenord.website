@@ -31,7 +31,7 @@
 		<hr class="divider">
 
 		<div class="blocks">
-			<Blocks :content="data?.result.content" />
+			<Blocks :content="data?.result.content || []" />
 		</div>
 
 		<hr class="divider">
