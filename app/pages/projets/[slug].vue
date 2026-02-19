@@ -31,15 +31,7 @@
 		<hr class="divider">
 
 		<div class="blocks">
-			<template v-for="block in data?.result.content">
-				<template v-if="block.type === 'article_heading'">
-					<BlockArticleHeading :block="block" />
-				</template>
-
-				<template v-else-if="block.type === 'cards'">
-					<BlockCards :block="block" />
-				</template>
-			</template>
+			<Blocks :content="data?.result.content" />
 		</div>
 
 		<hr class="divider">
@@ -88,6 +80,31 @@
 				},
 				content: {
 					query: 'page.content.content.toBlocks',
+					select: {
+						id: true,
+						type: true,
+						content: true,
+						isHidden: true,
+						images: {
+							query: 'block.content.images.toFiles',
+							select: {
+								id: true,
+								alt: true,
+								url: true,
+								width: true,
+								height: true
+							}
+						},
+						resolved_pages: {
+							query: 'block.content.pages_liste.toPages',
+							select: {
+								id: true,
+								title: true,
+								slug: true,
+								url: true,
+							}
+						}
+					}
 				},
 			}
 		}
