@@ -18,7 +18,7 @@
     	body: {
 			query: `site.find('${ slug }')`,
 			select: {
-				title: true
+				title: true,
 			}
 		}
 	});

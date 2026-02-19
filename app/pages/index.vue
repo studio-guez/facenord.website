@@ -27,10 +27,6 @@ type FetchData = CMS_API_Response & {
 			"slug": string,
 			"show_title": "true" | "false",
 			"content": Block[],
-			"pages_list_blocks": {
-				"id": string,
-				"resolved_pages": ResolvedPage[]
-			}[],
 			"image_cover": null
 		}
 	}

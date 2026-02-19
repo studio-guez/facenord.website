@@ -2,7 +2,7 @@
 	<header class="site-header grid-background">
 		<nav class="site-menu">
 			<li v-for="item in menu">
-				<NuxtLink class="btn uppercase" :to="'/' + item.url">{{ item.title }}</NuxtLink>
+				<NuxtLink class="btn uppercase" :to="item.url == '/' ? '/' : '/' + item.url ">{{ item.title }}</NuxtLink>
 			</li>
 		</nav>
 		<div class="site-logo" v-html="Logo"></div>

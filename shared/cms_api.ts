@@ -17,24 +17,24 @@ type CMS_API_Image = {
 	"width": number
 }
 
-type Page = {
+export type Page = {
   id: string,
   title: string,
   slug: string,
   url: string,
 }
 
-type MenuItem = {
+export type MenuItem = {
 	"title": string,
 	"url": string
 }
 
-type Tag = {
+export type Tag = {
 	"id": string,
 	"title": string
 }
 
-type Image = {
+export type Image = {
 	"id": string,
 	"alt": string,
 	"url": string,
@@ -42,7 +42,7 @@ type Image = {
 	"height": number
 }
 
-type ProjectHeader = {
+export type ProjectHeader = {
 	"id": string,
 	"title": string,
 	"url": string,
@@ -51,18 +51,18 @@ type ProjectHeader = {
 	"tags": Tag[]
 }
 
-type Project = ProjectHeader & {
+export type Project = ProjectHeader & {
 	intention: string,
 	description: string
 }
 
-type Block = (
+export type Block = (
 	BlockArticleHeading |
 	BlockCards |
 	BlockPagesList
 )
 
-type BlockArticleHeading = {
+export type BlockArticleHeading = {
 	"content": {
 		"titre": string,
 		"text": string
@@ -72,7 +72,7 @@ type BlockArticleHeading = {
 	"type": "article_heading"
 }
 
-type BlockCards = {
+export type BlockCards = {
 	"content": {
 		"titre": string,
 		"style": "color" | "light",
@@ -86,7 +86,7 @@ type BlockCards = {
 	"type": "cards"
 }
 
-type BlockPagesList = {
+export type BlockPagesList = {
 	"content": {
 		"titre": string,
 		"pages_liste": string[]
@@ -97,7 +97,7 @@ type BlockPagesList = {
 	"resolved_pages": Page[]
 }
 
-type BlockGallery = {
+export type BlockGallery = {
 	"content": {
 		"titre": string,
 		"images": string[]
