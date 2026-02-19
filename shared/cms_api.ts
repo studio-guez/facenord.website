@@ -59,7 +59,9 @@ export type Project = ProjectHeader & {
 export type Block = (
 	BlockArticleHeading |
 	BlockCards |
-	BlockPagesList
+	BlockPagesList |
+	BlockGallery |
+	BlockPodcast
 )
 
 export type BlockArticleHeading = {
@@ -106,4 +108,14 @@ export type BlockGallery = {
 	"isHidden": boolean,
 	"type": "pages_list",
 	"images": Image[]
+}
+
+export type BlockPodcast = {
+	"content": {
+		"titre": string,
+		"spotify_url": string
+	},
+	"id": string,
+	"isHidden": boolean,
+	"type": "podcast"
 }

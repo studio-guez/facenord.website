@@ -535,8 +535,11 @@
 }
 
 .section-podcast {
-	padding: 1.25rem .733rem;
 	border-bottom: var(--border) solid var(--grey);
+}
+
+.section-podcast-content {
+	padding: 1.25rem .733rem;
 }
 
 
