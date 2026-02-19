@@ -10,7 +10,7 @@
 			<br>//show_title: {{data?.result.home.show_title}}
 		</h1>
 
-		<Blocks :content="data?.result.home.content" />
+		<Blocks :content="data?.result.home.content || []" />
 
 	</main>
 </template>
