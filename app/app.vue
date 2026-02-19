@@ -2,7 +2,7 @@
   <div class="v-app">
     <Header :menu="sortedMenu"/>
     <NuxtPage/>
-    <footer></footer>
+    <Footer />
   </div>
 </template>
 
