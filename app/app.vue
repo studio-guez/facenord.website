@@ -12,10 +12,13 @@
 
   type FetchData = CMS_API_Response & {
     "result": {
+      "title": string,
       "menuHead": MenuItem[],
       "menuTail": MenuItem[]
     }
   }
+
+  const siteTitle = useState<string>('siteTitle');
 
   const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
     lazy: true,
@@ -23,6 +26,7 @@
     body: {
       query: "site",
       select: {
+        title: true,
         menuHead: {
           query: "site.find('home', 'projets')",
           select: {
@@ -40,6 +44,8 @@
       }
     }
   });
+
+  if (data.value) siteTitle.value = data.value.result.title;
 
   const sortedMenu = computed((): MenuItem[] => {
     return [...data.value?.result.menuHead, ...data.value?.result.menuTail];
