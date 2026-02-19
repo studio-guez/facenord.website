@@ -16,3 +16,8 @@ type CMS_API_Image = {
   "url": string,
   "width": number
 }
+
+type MenuItem = {
+  "title": string,
+  "url": string
+};
