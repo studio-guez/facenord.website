@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>{{ siteTitle }} | {{ data?.result.home.title }}</Title>
+  </Head>
   <main class="v-index"
   >
     <p>{{ status }}</p>
@@ -61,6 +64,7 @@ type ResolvedPage = {
 
 type FetchData = CMS_API_Response & {
   "result": {
+    "title": string,
     "home": {
       "title": string,
       "slug": string,
@@ -107,6 +111,7 @@ type FetchData = CMS_API_Response & {
   }
 }
 
+const siteTitle = useState<string>('siteTitle');
 
 const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
   lazy: true,
@@ -114,6 +119,7 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
   body: {
     query: 'site',
     select: {
+      title: true,
       home: {
         query: "site.find('home')",
         select: {
@@ -154,7 +160,9 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
       },
     }
   }
-})
+});
+
+if (data.value) siteTitle.value = data.value.result.title;
 
 const resolvedPagesMap: ComputedRef<Map<string, ResolvedPage[]>> = computed(() => {
   const map = new Map<string, ResolvedPage[]>()
@@ -163,7 +171,7 @@ const resolvedPagesMap: ComputedRef<Map<string, ResolvedPage[]>> = computed(() =
     map.set(block.id, block.resolved_pages)
   }
   return map
-})
+});
 
 </script>
 

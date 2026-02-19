@@ -1,7 +1,5 @@
 <template>
-  
-  <div class="v-app"
-  >
+  <div class="v-app">
     <Header :menu="sortedMenu"/>
     <main>
       <NuxtPage/>
@@ -15,7 +13,10 @@
   import type {CMS_API_Response, MenuItem} from "#shared/cms_api";
 
   type FetchData = CMS_API_Response & {
-    "result": MenuItem[]
+    "result": {
+      "menuHead": MenuItem[],
+      "menuTail": MenuItem[]
+    }
   }
 
   const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
@@ -47,9 +48,3 @@
   });
   
 </script>
-
-
-<style lang="scss" scoped>
-.v-app {
-}
-</style>

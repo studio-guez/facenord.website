@@ -1,4 +1,7 @@
 <template>
+	<Head>
+   	<Title>{{ siteTitle }} | {{ data?.result.title }}</Title>
+	</Head>
 	<p>{{ data?.result.title }}</p>
 </template>
 
@@ -7,6 +10,7 @@
 
 	const route = useRoute();
 	const slug: string = route.params.slug;
+	const siteTitle = useState<string>('siteTitle');
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 		lazy: true,
