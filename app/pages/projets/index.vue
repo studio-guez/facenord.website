@@ -1,4 +1,7 @@
 <template>
+	<Head>
+   	<Title>{{ siteTitle }} | {{ data?.result.title }}</Title>
+	</Head>
 	<main>
 		<header class="projects-header">
 			<fieldset class="project-tags">
@@ -33,10 +36,13 @@
 
 	type FetchData = CMS_API_Response & {
 		"result": {
+			"title": string,
 			"tags": Tag[],
 			"projects": Project[]
 		}
 	};
+
+	const siteTitle = useState<string>('siteTitle');
 
 	const {data, status} = useFetch<FetchData>('/api/CMS_KQLRequest', {
 		lazy: true,
@@ -44,6 +50,7 @@
 		body: {
 			query: "site",
 			select: {
+				title: "site.find('projets').title",
 				tags: {
 					query: "site.find('tags').children",
 					select: {
