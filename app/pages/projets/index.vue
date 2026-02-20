@@ -19,7 +19,7 @@
 				<div class="project-card-content col">
 					<header class="project-card-header">
 						<ul class="tag-list">
-							<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
+							<li v-for="tag in project.tags" class="tag">{{ tag }}</li>
 						</ul>
 						<h3 class="h3">{{ project.title }}</h3>
 						<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>

@@ -23,7 +23,7 @@
 				</div>
 				<div v-if="project.description"class="col col-text col-with-padding">
 					<ul class="tag-list">
-						<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
+						<li v-for="tag in project.tags" class="tag">{{ tag }}</li>
 					</ul>
 					<div class="text" v-html="project.description"></div>
 				</div>
@@ -37,8 +37,8 @@
 
 			<hr class="divider">
 
-			<section class="related">
-				
+			<section v-if="relatedProjects.length" class="related">
+				<BlockPagesList :projects="relatedProjects"/>
 			</section>
 		</main>
 	</div>
@@ -54,6 +54,10 @@
 
 	type FetchData = CMS_API_Response & {
 		"result": Project
+	};
+
+	type RelatedData = CMS_API_Response & {
+		"result": Project[]
 	};
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
@@ -73,8 +77,7 @@
 					select: IMAGE_QUERY
 				},
 				tags: {
-					query: 'page.tags.toPages',
-					select: TAG_QUERY
+					query: 'page.tags.split',
 				},
 				content: {
 					query: 'page.content.content.toBlocks',
@@ -89,4 +92,22 @@
 	const hasIntro = computed(() => {
 		return !!(project.value?.caption || project.value?.intention || project.value?.description);
 	});
+
+	// Fetch related projects
+	const tagList = computed(() => {
+		return project.value?.tags?.map(t => t.id) || [];
+	});
+
+	// console.log(tagList.value);
+
+	const { data: relatedData } = await useFetch<RelatedData>('/api/CMS_KQLRequest', {
+		method: 'POST',
+		lazy: true,
+		body: {
+			query:`site.find('projets/${slug}').siblings(false).filterBy('tags', 'typologie', ',')`,
+			select: PROJECT_HEADER_QUERY
+		}
+	});
+
+	const relatedProjects = computed(() => relatedData.value?.result || []);
 </script>
