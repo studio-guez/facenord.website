@@ -12,6 +12,10 @@
         <BlockPodcast :block="block" />
       </template>
 
+      <template v-else-if="block.type === 'video'">
+			<BlockVideo :block="block" />
+		</template>
+
 		<template v-else-if="block.type === 'cards'">
 			<BlockCards :block="block" />
 		</template>

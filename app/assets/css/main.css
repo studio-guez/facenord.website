@@ -358,6 +358,25 @@
 	right: .733rem;
 }
 
+/* Component - Video */
+
+.video-container {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%; /* 9 / 16 * 100 = 56.25% */
+		height: 0;
+		overflow: hidden;
+	}
+
+	.video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
 
 /* Component - Cards */
 
@@ -540,6 +559,10 @@
 
 .section-podcast-content {
 	padding: 1.25rem .733rem;
+}
+
+.section-video {
+	border-bottom: var(--border) solid var(--grey);
 }
 
 
