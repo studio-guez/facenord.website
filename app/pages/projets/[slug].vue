@@ -98,8 +98,6 @@
 		return project.value?.tags?.map(t => t.id) || [];
 	});
 
-	// console.log(tagList.value);
-
 	const { data: relatedData } = await useFetch<RelatedData>('/api/CMS_KQLRequest', {
 		method: 'POST',
 		lazy: true,

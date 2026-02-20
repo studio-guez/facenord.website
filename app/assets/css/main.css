@@ -428,9 +428,12 @@
 	font-size: 0.466rem;
 	background: var(--beige);
 	color: var(--purple);
-	padding: 0.2rem 0.4rem;
 	border-radius: 2rem;
 	font-weight: 500;
+}
+
+.tag:not(:has(label)) {
+	padding: 0.2rem 0.4rem;
 }
 
 .tag input {
@@ -447,6 +450,7 @@
 } 
 
 .tag label {
+	padding: 0.2rem 0.4rem;
 	display: flex;
 	align-items: baseline;
 	cursor: pointer;
