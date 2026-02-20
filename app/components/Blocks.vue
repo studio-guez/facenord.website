@@ -25,7 +25,7 @@
 		</template>
 
 		<template v-else-if="block.type === 'pages_list'">
-        <BlockPagesList :block="block" />
+        <BlockPagesList :projects="block.pages" />
       </template>
 
       <template v-else>

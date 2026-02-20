@@ -63,13 +63,30 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 									height: true
 								}
 							},
-							resolved_pages: {
+							pages: {
 								query: 'block.content.pages_liste.toPages',
 								select: {
 									id: true,
 									title: true,
-									slug: true,
-									url: true,
+									url: "page.uri",
+									caption: true,
+									image_cover: {
+										query: 'page.image_cover.toFile',
+										select: {
+											id: true,
+											alt: true,
+											url: true,
+											width: true,
+											height: true
+										}
+									},
+									tags: {
+										query: 'page.tags.toPages',
+										select: {
+											id: true,
+											title: true
+										}
+									}
 								}
 							}
 						}
