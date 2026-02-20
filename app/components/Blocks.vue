@@ -4,6 +4,10 @@
 			<BlockGallery :block="block" />
 		</template>
 
+		<template v-else-if="block.type === 'text'">
+			<BlockText :block="block" />
+		</template>
+
 		<template v-else-if="block.type === 'podcast'">
         <BlockPodcast :block="block" />
       </template>
