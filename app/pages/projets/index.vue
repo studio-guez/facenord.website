@@ -13,23 +13,25 @@
 				</div>
 			</fieldset>
 		</header>
-		<ul class="project-list">
-			<li v-for="project in filteredProjects" :key="project.id" class="project-card cols">
-				<div class="project-card-image col">
-					<img :id="project.image_cover.id" :src="project.image_cover.url" :alt="project.image_cover.alt">
-				</div>
-				<div class="project-card-content col">
-					<header class="project-card-header">
-						<ul class="tag-list">
-							<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.includes(tag) }">{{ tag }}</li>
-						</ul>
-						<h3 class="h3">{{ project.title }}</h3>
-						<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>
-					</header>
-					<p class="small">{{ project.caption }}</p>
-				</div>
-			</li>
-		</ul>
+		<TransitionGroup tag="ul" name="project-list" class="project-list">
+			<div v-for="project in filteredProjects" :key="project.id" class="project-list-item">
+				<li class="project-card cols">
+					<div class="project-card-image col">
+						<img :id="project.image_cover.id" :src="project.image_cover.url" :alt="project.image_cover.alt">
+					</div>
+					<div class="project-card-content col">
+						<header class="project-card-header">
+							<ul class="tag-list">
+								<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.includes(tag) }">{{ tag }}</li>
+							</ul>
+							<h3 class="h3">{{ project.title }}</h3>
+							<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>
+						</header>
+						<p class="small">{{ project.caption }}</p>
+					</div>
+				</li>
+			</div>
+		</TransitionGroup>
 	</main>
 </template>
 
@@ -87,3 +89,22 @@
 	});
 
 </script>
+
+<style scoped>
+	.project-list-item {
+		display: grid;
+		grid-template-rows: 1fr;
+		overflow: hidden;
+		transition: all 0.4s ease;
+	}
+
+	.project-list-item > * {
+		min-height: 0;
+	}
+
+	.project-list-enter-from,
+	.project-list-leave-to {
+	  grid-template-rows: 0fr;
+	  opacity: 0;
+	}
+</style>
