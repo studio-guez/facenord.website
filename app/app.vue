@@ -20,7 +20,6 @@
   const siteTitle = useState<string>('siteTitle');
 
   const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
-    lazy: true,
     method: 'POST',
     body: {
       query: "site",
@@ -30,14 +29,16 @@
           query: "site.find('home', 'projets')",
           select: {
             title: true,
-            url: "page.isHomePage ? '/' : page.uri"
+            url: "page.isHomePage ? '/' : page.uri",
+            slug: 'page.slug'
           }
         },
         menuTail: {
           query: "site.children.listed.not('home', 'projets', 'tags')",
           select: {
             title: true,
-            url: "page.uri"
+            url: "page.uri",
+            slug: 'page.slug'
           }
         }
       }

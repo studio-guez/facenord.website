@@ -47,6 +47,7 @@
 		}
 	};
 
+	const route = useRoute();
 	const siteTitle = useState<string>('siteTitle');
 
 	const tags = ref([]);

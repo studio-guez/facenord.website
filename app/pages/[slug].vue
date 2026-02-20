@@ -19,14 +19,13 @@
 	import type CMS_API_Response from "#shared/cms_api";
 	import {IMAGE_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
 
-	const route = useRoute();
-	const slug: string = route.params.slug;
 	const siteTitle = useState<string>('siteTitle');
+	const { slug } = usePageMeta();
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
    	method: 'POST',
     	body: {
-			query: `site.find('${ slug }')`,
+			query: `site.find('${ slug.value }')`,
 			select: {
 				title: true,
 				slug: true,

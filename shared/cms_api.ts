@@ -26,7 +26,8 @@ export type Page = {
 
 export type MenuItem = {
 	"title": string,
-	"url": string
+	"url": string,
+	"slug": string
 }
 
 export type Tag = {
