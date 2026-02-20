@@ -2,16 +2,8 @@
 	<Head>
 		<Title>{{ siteTitle }} | {{ data?.result.home.title }}</Title>
 	</Head>
-	<main class="v-index">
-		<p>{{ status }}</p>
-
-		<h1>
-			{{data?.result.home.title}}
-			<br>//show_title: {{data?.result.home.show_title}}
-		</h1>
-
+	<main>
 		<Blocks :content="data?.result.home.content || []" />
-
 	</main>
 </template>
 
@@ -61,9 +53,3 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 });
 
 </script>
-
-
-<style lang="scss" scoped>
-.v-index {
-}
-</style>
