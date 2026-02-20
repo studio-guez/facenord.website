@@ -38,7 +38,7 @@
 			<hr class="divider">
 
 			<section v-if="relatedProjects.length" class="related">
-				<BlockPagesList :projects="relatedProjects"/>
+				<BlockPagesList :projects="relatedProjects" title="Quelques projets similaires" :link="{ label: 'Retour à la page projets', url:'/projets' }"/>
 			</section>
 		</main>
 	</div>
