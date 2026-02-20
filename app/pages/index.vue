@@ -17,8 +17,8 @@
 
 
 <script setup lang="ts">
-
 import type {CMS_API_Response, Block} from "#shared/cms_api";
+import {IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY } from "#shared/cms_queries";
 
 type FetchData = CMS_API_Response & {
 	"result": {
@@ -55,53 +55,17 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 							isHidden: true,
 							images: {
 								query: 'block.content.images.toFiles',
-								select: {
-									id: true,
-									alt: true,
-									url: true,
-									width: true,
-									height: true
-								}
+								select: IMAGE_QUERY
 							},
 							pages: {
 								query: 'block.content.pages_liste.toPages',
-								select: {
-									id: true,
-									title: true,
-									url: "page.uri",
-									caption: true,
-									image_cover: {
-										query: 'page.image_cover.toFile',
-										select: {
-											id: true,
-											alt: true,
-											url: true,
-											width: true,
-											height: true
-										}
-									},
-									tags: {
-										query: 'page.tags.toPages',
-										select: {
-											id: true,
-											title: true
-										}
-									}
-								}
+								select: PROJECT_HEADER_QUERY
 							}
 						}
 					},
 					image_cover: {
 						query: 'page.photo_equipe.toFiles.first',
-						select: {
-							alt: "file.alt.value",
-							tiny: 'file.resize(50, null, 10)',
-							small: 'file.resize(500)',
-							reg: 'file.resize(1280)',
-							large: 'file.resize(1920)',
-							xxl: 'file.resize(2500)',
-							focus: 'file.focus'
-						}
+						select: IMAGE_QUERY
 					}
 				}
 			}

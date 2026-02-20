@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 	import type {CMS_API_Response, Tag} from "#shared/cms_api";
+	import { IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY } from "#shared/cms_queries";
 
 	type FetchData = CMS_API_Response & {
 		"result": {
@@ -53,36 +54,11 @@
 				title: "site.find('projets').title",
 				tags: {
 					query: "site.find('tags').children",
-					select: {
-						id: true,
-						title: true
-					}
+					select: TAG_QUERY
 				},
 				projects: {
 					query: "site.find('projets').children",
-					select: {
-						id: true,
-						title: true,
-						url: "page.uri",
-						caption: true,
-						image_cover: {
-							query: 'page.image_cover.toFile',
-							select: {
-								id: true,
-								alt: true,
-								url: true,
-								width: true,
-								height: true
-							}
-						},
-						tags: {
-							query: 'page.tags.toPages',
-							select: {
-								id: true,
-								title: true
-							}
-						}
-					}
+					select: PROJECT_HEADER_QUERY
 				}
 			}
 		}
