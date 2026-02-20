@@ -16,7 +16,7 @@
 						</ul>
 						<h3 class="h3">{{ project.title }}</h3>
 					</header>
-					<p class="text small">{{ project.caption }}</p>
+					<div class="text small" v-html="project.caption"></div>
 				</div>
 			</li>
 		</ul>

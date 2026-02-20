@@ -14,7 +14,7 @@
 				<div>
 					<div v-if="project.caption" class="col col-text col-with-padding">
 						<h2 class="h2 purple">En bref</h2>
-						<p>{{ project.caption }}</p>
+						<div class="text" v-html="project.caption"></div>
 					</div>
 					<div v-if="project.intention"class="col col-text col-with-padding">
 						<h2 class="h2 purple">Intentions</h2>
