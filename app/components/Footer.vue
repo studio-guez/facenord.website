@@ -1,5 +1,5 @@
 <template>
-	<footer class="site-footer grid-background">
+	<footer class="site-footer">
 		<div class="site-footer-fixed">
 			<address>
 				Route de la galaise 23A<br>

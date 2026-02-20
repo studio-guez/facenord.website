@@ -146,12 +146,20 @@
 
 /* Layout */
 
+.site-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 .cols {
 	position: relative;
 	display: grid;
 	grid-template-columns: calc((8.333vw - var(--border)/12)*5) auto;
+	background-color: white;
 	border-bottom: var(--border) solid var(--grey);
-	grid-auto-rows: 1fr
+	grid-auto-rows: 1fr;
+	z-index: 0;
 }
 
 .cols:has(> .cols) {
@@ -169,7 +177,7 @@
 	align-items: start;
 }
 
-.cols.cols-align-start::after {
+.cols.cols-align-start::before {
 	content: '';
 	display: block;
 	background-image: linear-gradient(var(--grey) var(--border), transparent var(--border)), linear-gradient(90deg, var(--grey) var(--border), transparent var(--border));
@@ -214,6 +222,7 @@
 .section-footer {
 	text-align: center;
 	padding: .733rem;
+	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
 
@@ -225,13 +234,13 @@
 	margin: 0;
 	border: none;
 	height: 8.333vw;
-	background-image: linear-gradient(var(--grey) var(--border), transparent var(--border)), linear-gradient(90deg, var(--grey) var(--border), transparent var(--border));
+	background-image: linear-gradient(var(--grey) var(--border), transparent var(--border)), linear-gradient(90deg, var(--grey) var(--border), white var(--border));
 	background-size: calc(8.333vw - (var(--border)/12)) 8.333vw;
 	background-position: 0 calc(var(--border) * -1);
 }
 
 .grid-background {
-	background-image: linear-gradient(var(--grey) var(--border), transparent var(--border)), linear-gradient(90deg, var(--grey) var(--border), transparent var(--border));
+	background-image: linear-gradient(var(--grey) var(--border), transparent var(--border)), linear-gradient(90deg, var(--grey) var(--border), white var(--border));
 	background-size: calc(8.333vw - (var(--border)/12)) 8.333vw;
 	background-position: 0 calc(var(--border) * -1);
 }
@@ -282,6 +291,7 @@
 .gallery {
 	position: relative;
 	width: 100%;
+	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
 
@@ -489,7 +499,7 @@
 /* Component: Project Card */
 
 .project-card-small {
-	width: 41.667vw;
+	width: calc(((8.333vw - var(--border)/12)*5) + var(--border));
 	border-left: var(--border) solid var(--grey);
 }
 
@@ -541,6 +551,7 @@
 }
 
 .projects-header {
+	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
 
@@ -550,6 +561,7 @@
 .project-header-title {
 	padding: 1.33rem 0.733rem;
 	text-align: center;
+	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
 

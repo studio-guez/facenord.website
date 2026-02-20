@@ -1,11 +1,10 @@
 <template>
-  <div class="v-app">
+  <div class="site-wrapper grid-background">
     <Header :menu="sortedMenu"/>
     <NuxtPage/>
     <Footer />
   </div>
 </template>
-
 
 <script setup lang="ts">
   import type {CMS_API_Response, MenuItem} from "#shared/cms_api";
