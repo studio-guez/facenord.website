@@ -24,8 +24,8 @@
 			<BlockArticleHeading :block="block" />
 		</template>
 
-		<template v-else-if="block.type === 'pages_list' && block.pages.length">
-        <BlockPagesList :projects="block.pages" />
+		<template v-else-if="block.type === 'pages_list'">
+        <BlockPagesList v-if="block.pages.length" :projects="block.pages" />
       </template>
 
       <template v-else>
