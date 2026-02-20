@@ -29,7 +29,7 @@
       </template>
 
       <template v-else>
-      	<div>type: {{block.type}}</div>
+      	<div class="section-header" >TODO: bloc {{block.type}}</div>
       </template>
 	</template>
 </template>

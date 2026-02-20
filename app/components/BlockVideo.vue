@@ -1,10 +1,10 @@
 <template>
-	<section class="section-video">
+	<section v-if="props.block.content.titre || embedUrl" class="section-video">
 		<header v-if="props.block.content.titre" class="section-header">
 			<h2 class="h2 purple">{{ props.block.content.titre }}</h2>
 		</header>
 
-		<div class="video-container">
+		<div v-if="embedUrl" class="video-container">
 			<iframe width="560" height="315" :src="embedUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div>
 	</section>
