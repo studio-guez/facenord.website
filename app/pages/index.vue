@@ -27,7 +27,6 @@ type FetchData = CMS_API_Response & {
 const siteTitle = useState<string>('siteTitle');
 
 const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
-	lazy: true,
 	method: 'POST',
 	body: {
 		query: 'site',

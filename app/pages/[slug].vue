@@ -1,10 +1,18 @@
 <template>
-	<Head>
-   	<Title>{{ siteTitle }} | {{ data?.result.title }}</Title>
-	</Head>
-	<main>
-		<Blocks :content="data?.result.content || []" />
-	</main>
+	<div v-if="page">
+		<Head>
+			<Title>{{ siteTitle }} | {{ page.title }}</Title>
+		</Head>
+		<main>
+			<header v-if="page.show_title" class="page-header">
+				<div class="page-header-title">
+					<h1 class="h1">{{ page.title }}</h1>
+				</div>
+				<img v-if="page.image_cover" :src="page.image_cover.url" :alt="page.image_cover.alt" class="page-header-image">
+			</header>
+			<Blocks :content="page.content || []" />
+		</main>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -16,14 +24,13 @@
 	const siteTitle = useState<string>('siteTitle');
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
-		lazy: true,
    	method: 'POST',
     	body: {
 			query: `site.find('${ slug }')`,
 			select: {
 				title: true,
 				slug: true,
-				show_title: true,
+				show_title: 'page.show_title.toBool',
 				content: {
 					query: 'page.content.content.toBlocks',
 					select: BLOCKS_QUERY
@@ -35,4 +42,6 @@
 			}
 		}
 	});
+
+	const page = computed(() => data.value?.result);
 </script>

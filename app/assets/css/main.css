@@ -537,6 +537,21 @@
 
 /* Pages */
 
+.page-header-title {
+	padding: 1.33rem 0.733rem;
+	text-align: center;
+	background: white;
+	border-bottom: var(--border) solid var(--grey);
+}
+
+.page-header-image {
+	width: 100%;
+	max-height: 20rem;
+	object-fit: cover;
+	border-bottom: var(--border) solid var(--grey)
+}
+
+
 /* Page: Projects */
 
 .project-tags {
@@ -558,20 +573,6 @@
 
 /* Page: Project single */
 
-.project-header-title {
-	padding: 1.33rem 0.733rem;
-	text-align: center;
-	background: white;
-	border-bottom: var(--border) solid var(--grey);
-}
-
-.project-header-image {
-	width: 100%;
-	max-height: 20rem;
-	object-fit: cover;
-	border-bottom: var(--border) solid var(--grey)
-}
-
 .project-intro .tag-list {
 	margin-bottom: 1rem;
 }
@@ -581,6 +582,7 @@
 }
 
 .section-podcast {
+	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
 

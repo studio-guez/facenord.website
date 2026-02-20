@@ -4,11 +4,11 @@
 			<Title>{{ siteTitle }} | {{ project.title }}</Title>
 		</Head>
 		<main>
-			<header class="project-header">
-				<div class="project-header-title">
+			<header class="page-header">
+				<div class="page-header-title">
 					<h1 class="h1">{{ project.title }}</h1>
 				</div>
-				<img :src="project.image_cover.url" :alt="project.image_cover.alt" class="project-header-image">
+				<img :src="project.image_cover.url" :alt="project.image_cover.alt" class="page-header-image">
 			</header>
 			<section v-if="hasIntro" class="project-intro cols cols-align-start">
 				<div>
@@ -61,7 +61,6 @@
 	};
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
-		lazy: true,
 		method: 'POST',
 		body: {
 			query: `site.find('projets/${ slug }')`,
