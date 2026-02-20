@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div v-if="project.description"class="col col-text col-with-padding">
-					<ul class="tag-list">
+					<ul v-if="project.tags.length" class="tag-list">
 						<li v-for="tag in project.tags" class="tag">{{ tag }}</li>
 					</ul>
 					<div class="text" v-html="project.description"></div>
