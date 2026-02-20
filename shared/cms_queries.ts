@@ -25,3 +25,18 @@ export const PROJECT_HEADER_QUERY = {
 		select: TAG_QUERY
 	}
 }
+
+export const BLOCKS_QUERY = {
+	id: true,
+	type: true,
+	content: true,
+	isHidden: true,
+	images: {
+		query: 'block.content.images.toFiles',
+		select: IMAGE_QUERY
+	},
+	pages: {
+		query: 'block.content.pages_liste.toPages',
+		select: PROJECT_HEADER_QUERY
+	}
+}

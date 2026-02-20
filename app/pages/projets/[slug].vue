@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 	import type { CMS_API_Response, Project } from "#shared/cms_api";
-	import { IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY } from "#shared/cms_queries";
+	import { IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
 
 	const route = useRoute();
 	const slug: string = route.params.slug;
@@ -78,17 +78,7 @@
 				},
 				content: {
 					query: 'page.content.content.toBlocks',
-					select: {
-						id: true,
-						type: true,
-						content: true,
-						isHidden: true,
-						images: {
-							query: 'block.content.images.toFiles',
-							select: IMAGE_QUERY
-						},
-						pages: PROJECT_HEADER_QUERY
-					}
+					select: BLOCKS_QUERY
 				},
 			}
 		}
