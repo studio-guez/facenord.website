@@ -93,12 +93,19 @@
 	text-transform: uppercase;
 }
 
-.text li:before {
-	content: "↪ ";
+.text ul li {
+	list-style-type: "↪";
+	padding-left: 0.3em;
+	margin-left: 0.9em;
 }
 
-.text p + p {
-	margin-top: 1em;
+.text ol li {
+	list-style: decimal;
+	margin-left: 1.2em;
+}
+
+.text * + p {
+	margin-top: 0.9em;
 }
 
 
