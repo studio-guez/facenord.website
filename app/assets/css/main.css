@@ -329,12 +329,12 @@
 	transition: visibility 0s, opacity 0.3s;
 }
 
-.gallery-image::before {
+.gallery::before {
 	left: 0;
 	background-image: linear-gradient(90deg, #FFF 0%, rgba(217, 217, 217, 0.00) 100%);
 }
 
-.gallery-image::after {
+.gallery::after {
 	right: 0;
 	background-image: linear-gradient(270deg, #FFF 0%, rgba(217, 217, 217, 0.00) 100%);
 }
@@ -346,8 +346,8 @@
 	transition: opacity 0.15s, visibility 0.15s;
 }
 
-.gallery-image.start::before,
-.gallery-image.end::after {
+.gallery.start::before,
+.gallery.end::after {
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 0.3s, visibility 0.3s;

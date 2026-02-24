@@ -1,6 +1,6 @@
 <template>
 	<section class="section-gallery">
-		<div class="gallery gallery-image start">
+		<div class="gallery gallery-image" ref="gallery">
 			<button class="gallery-prev" v-html="IconPrev"></button>
 			<ul class="gallery-items">
 				<li v-for="image in props.block.images" class="gallery-item">
@@ -20,4 +20,7 @@
 	const props = defineProps<{
 		block: Block
 	}>();
+
+	const gallery = ref(null);
+	useGallery(gallery);
 </script>

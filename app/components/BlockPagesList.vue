@@ -2,7 +2,7 @@
 	<header v-if="props.title" class="section-header">
 		<h2 class="h2 purple">{{ props.title }}</h2>
 	</header>
-	<div class="gallery gallery-card start">
+	<div class="gallery gallery-card" ref="gallery">
 		<button class="gallery-prev" v-html="IconPrev"></button>
 		<ul class="gallery-items">
 			<li v-for="project in props.projects" class="gallery-item project-card project-card-small">
@@ -41,5 +41,6 @@
 		}
 	}>();
 
-
+	const gallery = ref(null);
+	useGallery(gallery);
 </script>
