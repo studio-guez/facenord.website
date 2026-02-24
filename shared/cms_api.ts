@@ -62,7 +62,10 @@ export type Block = (
 	BlockCards |
 	BlockPagesList |
 	BlockGallery |
-	BlockPodcast
+	BlockPodcast |
+	BlockVideo |
+	BlockImage |
+	BlockText
 )
 
 export type BlockArticleHeading = {

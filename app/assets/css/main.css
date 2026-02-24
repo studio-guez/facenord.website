@@ -243,6 +243,13 @@
 	color: var(--purple);
 }
 
+.section-caption {
+	text-align: center;
+	padding: .433rem;
+	background: white;
+	border-bottom: var(--border) solid var(--grey);
+}
+
 .divider {
 	margin: 0;
 	border: none;

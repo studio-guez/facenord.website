@@ -4,14 +4,16 @@
 			<h2 class="h2 purple">{{ props.block.content.titre }}</h2>
 		</header>
 
-		<div v-if="embedUrl" class="video-container">
-			<iframe width="560" height="315" :src="embedUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		</div>
+		<figure>
+			<div v-if="embedUrl" class="video-container">
+				<iframe width="560" height="315" :src="embedUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			</div>
 
-		<footer v-if="props.block.content.caption || props.block.content.credits" class="section-footer">
-			<div v-if="props.block.content.caption" class="text small" v-html="props.block.content.caption"></div>
-			<div v-if="props.block.content.credits" class="text x-small mono" v-html="props.block.content.credits"></div>
-		</footer>
+			<figcaption v-if="props.block.content.caption || props.block.content.credits" class="section-caption">
+				<div v-if="props.block.content.caption" class="text small" v-html="props.block.content.caption"></div>
+				<div v-if="props.block.content.credits" class="text x-small mono" v-html="props.block.content.credits"></div>
+			</figcaption>
+		</figure>
 	</section>
 </template>
 

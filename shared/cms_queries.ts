@@ -34,6 +34,10 @@ export const BLOCKS_QUERY = {
 		query: 'block.content.images.toFiles',
 		select: IMAGE_QUERY
 	},
+	image: {
+		query: 'block.content.image.toFile',
+		select: IMAGE_QUERY
+	},
 	pages: {
 		query: 'block.content.pages_liste.toPages',
 		select: PROJECT_HEADER_QUERY

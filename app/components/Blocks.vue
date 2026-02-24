@@ -16,6 +16,10 @@
 			<BlockVideo :block="block" />
 		</template>
 
+		<template v-else-if="block.type === 'image'">
+			<BlockImage :block="block" />
+		</template>
+
 		<template v-else-if="block.type === 'cards'">
 			<BlockCards :block="block" />
 		</template>
