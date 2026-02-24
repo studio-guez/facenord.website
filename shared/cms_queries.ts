@@ -13,9 +13,9 @@ export const TAG_QUERY = {
 
 export const PROJECT_HEADER_QUERY = {
 	id: true,
-	title: true,
+	title: 'page.title.smartypants',
 	url: "page.uri",
-	caption: true,
+	caption: 'page.caption.smartypants',
 	image_cover: {
 		query: 'page.image_cover.toFile',
 		select: IMAGE_QUERY

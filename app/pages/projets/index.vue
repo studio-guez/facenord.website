@@ -57,7 +57,7 @@
 		body: {
 			query: "site",
 			select: {
-				title: "site.find('projets').title",
+				title: "site.find('projets').title.smartypants",
 				tags: {
 					query: "site.find('tags').children",
 					select: TAG_QUERY

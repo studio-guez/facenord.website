@@ -27,7 +27,7 @@
     	body: {
 			query: `site.find('${ slug.value }')`,
 			select: {
-				title: true,
+				title: 'page.title.smartypants',
 				slug: true,
 				show_title: 'page.show_title.toBool',
 				content: {

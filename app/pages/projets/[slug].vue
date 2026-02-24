@@ -66,11 +66,11 @@
 			query: `site.find('projets/${ slug }')`,
 			select: {
 				id: true,
-				title: true,
+				title: 'page.title.smartypants',
 				url: "page.uri",
-				caption: true,
-				intention: true,
-				description: true,
+				caption: 'page.caption.smartypants',
+				intention: 'page.intention.smartypants',
+				description: 'page.description.smartypants',
 				image_cover: {
 					query: 'page.image_cover.toFile',
 					select: IMAGE_QUERY

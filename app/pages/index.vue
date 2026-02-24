@@ -34,7 +34,7 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 			home: {
 				query: "site.find('home')",
 				select: {
-					title: true,
+					title: 'page.title.smartypants',
 					slug: true,
 					show_title: true,
 					content: {
