@@ -70,7 +70,7 @@
 }
 
 .x-small {
-	font-size: 0.4667rem;
+	font-size: 0.533rem;
 }
 
 .mono {
@@ -596,8 +596,12 @@
 	padding: 1.25rem .733rem;
 }
 
-.section-video {
+.video-container {
 	border-bottom: var(--border) solid var(--grey);
+}
+
+.section-footer * + * {
+	margin-top: 0.25rem;
 }
 
 
