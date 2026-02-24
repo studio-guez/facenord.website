@@ -16,19 +16,21 @@
 		<TransitionGroup tag="ul" name="project-list" class="project-list">
 			<div v-for="project in filteredProjects" :key="project.id" class="project-list-item">
 				<li class="project-card cols">
-					<div class="project-card-image col">
-						<img :id="project.image_cover.id" :src="project.image_cover.url" :alt="project.image_cover.alt">
-					</div>
-					<div class="project-card-content col">
-						<header class="project-card-header">
-							<ul class="tag-list">
-								<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.includes(tag) }">{{ tag }}</li>
-							</ul>
-							<h3 class="h3">{{ project.title }}</h3>
-							<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>
-						</header>
-						<p class="small" v-html="project.caption"></p>
-					</div>
+					<NuxtLink :to="project.url" style="display: contents">
+						<div class="project-card-image col">
+							<img :id="project.image_cover.id" :src="project.image_cover.url" :alt="project.image_cover.alt">
+						</div>
+						<div class="project-card-content col">
+							<header class="project-card-header">
+								<ul class="tag-list">
+									<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.includes(tag) }">{{ tag }}</li>
+								</ul>
+								<h3 class="h3">{{ project.title }}</h3>
+								<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>
+							</header>
+							<p class="small" v-html="project.caption"></p>
+						</div>
+					</NuxtLink>
 				</li>
 			</div>
 		</TransitionGroup>
