@@ -79,7 +79,7 @@
 					query: 'page.tags.split',
 				},
 				content: {
-					query: 'page.content.content.toBlocks',
+					query: 'page.content.content.toResolvedBlocks',
 					select: BLOCKS_QUERY
 				},
 			}

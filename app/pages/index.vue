@@ -38,7 +38,7 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 					slug: true,
 					show_title: true,
 					content: {
-						query: 'page.content.content.toBlocks',
+						query: 'page.content.content.toResolvedBlocks',
 						select: BLOCKS_QUERY
 					},
 					image_cover: {
