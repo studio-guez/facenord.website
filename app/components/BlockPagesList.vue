@@ -6,7 +6,7 @@
 		<button class="gallery-prev" v-html="IconPrev"></button>
 		<ul class="gallery-items">
 			<li v-for="project in props.projects" class="gallery-item project-card project-card-small">
-				<NuxtLink :to="project.url">
+				<NuxtLink :to="'/' + project.url">
 					<div v-if="project.image_cover" class="col project-card-image">
 						<img :src="project.image_cover?.url" :alt="project.image_cover?.alt">
 					</div>
