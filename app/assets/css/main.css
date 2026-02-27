@@ -610,6 +610,11 @@
 	padding: 1.25rem .733rem;
 }
 
+.image-container img {
+	object-fit: cover;
+	max-height: 100vh;
+}
+
 .video-container {
 	border-bottom: var(--border) solid var(--grey);
 }
