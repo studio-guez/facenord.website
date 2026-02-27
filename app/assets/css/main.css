@@ -429,6 +429,7 @@
 	padding: 1rem;
 	align-items: center;
 	overflow-x: scroll;
+	overflow-y: hidden;
 	scrollbar-color: var(--purple) transparent;
 }
 
@@ -455,6 +456,30 @@
 	background: var(--purple);
 	border-color: var(--purple);
 	color: white;
+}
+
+.card-container {
+	position: relative;
+}
+
+.card-arrow {
+	position: absolute;
+	left: 20vw;
+}
+
+.card-arrow svg {
+	width: 16vw;
+}
+
+.card-arrow.bottom {
+	bottom: -6.5vw;
+	transform: rotate(-18deg);
+}
+
+.card-arrow.top {
+	top: -6.5vw;
+	bottom: auto;
+	transform: scale(1, -1) rotate(-7deg);
 }
 
 /* Component: Tags */
