@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 	import type CMS_API_Response from "#shared/cms_api";
-	import {IMAGE_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
+	import {BLOCKS_QUERY } from "#shared/cms_queries";
 
 	const siteTitle = useState<string>('siteTitle');
 	const { slug } = usePageMeta();
@@ -34,10 +34,7 @@
 					query: 'page.content.content.toResolvedBlocks',
 					select: BLOCKS_QUERY
 				},
-				image_cover: {
-					query: 'page.photo_equipe.toFiles.first',
-					select: IMAGE_QUERY
-				}
+				image_cover: 'page.image_cover.toFile'
 			}
 		}
 	});

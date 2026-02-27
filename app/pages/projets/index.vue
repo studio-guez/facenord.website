@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 	import type {CMS_API_Response, Tag} from "#shared/cms_api";
-	import { IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY } from "#shared/cms_queries";
+	import { TAG_QUERY, PROJECT_HEADER_QUERY } from "#shared/cms_queries";
 
 	type FetchData = CMS_API_Response & {
 		"result": {

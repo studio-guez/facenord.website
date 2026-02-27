@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 	import type { CMS_API_Response, Project } from "#shared/cms_api";
-	import { IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
+	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
 
 	const route = useRoute();
 	const slug: string = route.params.slug;
@@ -71,10 +71,7 @@
 				caption: 'page.caption.smartypants',
 				intention: 'page.intention.smartypants',
 				description: 'page.description.smartypants',
-				image_cover: {
-					query: 'page.image_cover.toFile',
-					select: IMAGE_QUERY
-				},
+				image_cover: 'page.image_cover.toFile',
 				tags: {
 					query: 'page.tags.split',
 				},

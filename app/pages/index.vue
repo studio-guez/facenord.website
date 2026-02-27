@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import type {CMS_API_Response, Block} from "#shared/cms_api";
-import {IMAGE_QUERY, TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
+import {TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
 
 type FetchData = CMS_API_Response & {
 	"result": {
@@ -41,10 +41,7 @@ const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 						query: 'page.content.content.toResolvedBlocks',
 						select: BLOCKS_QUERY
 					},
-					image_cover: {
-						query: 'page.photo_equipe.toFiles.first',
-						select: IMAGE_QUERY
-					}
+					image_cover: 'page.image_cover.toFile'
 				}
 			}
 		}

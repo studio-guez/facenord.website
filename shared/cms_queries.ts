@@ -8,10 +8,7 @@ export const PROJECT_HEADER_QUERY = {
 	title: 'page.title.smartypants',
 	url: "page.uri",
 	caption: 'page.caption.smartypants',
-	image_cover: {
-		query: 'page.image_cover.toFile',
-		select: IMAGE_QUERY
-	},
+	image_cover: 'page.image_cover.toFile',
 	tags: {
 		query: 'page.tags.split'
 	}
