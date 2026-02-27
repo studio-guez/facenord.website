@@ -11,7 +11,7 @@
 						<p class="mono" :class="{'small': !isColorStyle}" v-html="card.text"></p>
 						<p v-if="card.baseline" class="x-small mono">{{ card.baseline }}</p>
 					</li>
-					<div v-if="i < props.block.content.cards.length-1" class="card-arrow" :class="{top: !isEven(i), bottom: isEven(i)}" v-html="Arrow"></div>
+					<div v-if="i < props.block.content.cards.length-1 && isColorStyle" class="card-arrow" :class="{top: !isEven(i), bottom: isEven(i)}" v-html="Arrow"></div>
 				</div>
 			</template>
 		</ul>
