@@ -12,6 +12,10 @@
 			</ul>
 			<button class="gallery-next" v-html="IconNext"></button>
 		</div>
+		<footer v-if="props.block.content.caption || props.block.content.credits" class="section-caption">
+			<div v-if="props.block.content.caption" class="text small" v-html="props.block.content.caption"></div>
+			<div v-if="props.block.content.credits" class="text x-small mono" v-html="props.block.content.credits"></div>
+		</footer>
 	</section>
 </template>
 
