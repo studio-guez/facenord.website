@@ -32,6 +32,10 @@
         <BlockPagesList v-if="block.pages.length" :projects="block.pages" :title="block.content.titre" />
       </template>
 
+      <template v-else-if="block.type === 'profiles'">
+			<BlockProfiles :block="block" />
+		</template>
+
       <template v-else-if="block.type === 'divider'">
 			<BlockDivider />
 		</template>
