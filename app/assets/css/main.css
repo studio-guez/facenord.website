@@ -544,11 +544,12 @@
 /* Component: Project Card */
 
 .project-card-small {
-	width: calc(((8.333vw - var(--border)/12)*5) + var(--border));
+	width: calc(((8.333vw - var(--border)/12)*5));
 	border-left: var(--border) solid var(--grey);
 }
 
 .project-card-small:last-child {
+	width: calc(((8.333vw - var(--border)/12)*5) + var(--border));
 	border-right: var(--border) solid var(--grey);
 }
 
