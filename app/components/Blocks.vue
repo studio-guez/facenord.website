@@ -36,6 +36,10 @@
 			<BlockProfiles :block="block" />
 		</template>
 
+		<template v-else-if="block.type === 'map'">
+			<BlockMap :block="block" />
+		</template>
+
       <template v-else-if="block.type === 'divider'">
 			<BlockDivider />
 		</template>

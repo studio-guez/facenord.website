@@ -647,11 +647,3 @@
 .section-footer * + * {
 	margin-top: 0.25rem;
 }
-
-
-/* Page: Contact */
-
-.contact-btn {
-	margin-top: 1.25rem;
-	margin-left: auto;
-}

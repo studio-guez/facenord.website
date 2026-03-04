@@ -28,7 +28,7 @@ a {
 	text-decoration: inherit;
 }
 
-img, svg {
+img, svg, iframe {
 	display: block;
 	width: 100%;
 	height: auto;
