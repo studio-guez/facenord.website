@@ -7,7 +7,7 @@
 		<ul class="project-list cols">
 			<li class="project-card cols" v-for="profile in props.block.content.profiles">
 				<div class="col project-card-image">
-					<img :src="profile.image_cover.url" :alt="profile.image_cover.alt ?? profile.name">
+					<img :src="profile.image_cover.url" :alt="profile.image_cover.alt ?? profile.name" :style="{objectPosition: profile.image_cover.focus}">
 				</div>
 				<div class="col project-card-content">
 					<header class="project-card-header">

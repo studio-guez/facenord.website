@@ -8,7 +8,7 @@
 			<li v-for="project in props.projects" class="gallery-item project-card project-card-small">
 				<NuxtLink :to="'/' + project.url">
 					<div v-if="project.image_cover" class="col project-card-image">
-						<img :src="project.image_cover?.url" :alt="project.image_cover?.alt">
+						<img :src="project.image_cover?.url" :alt="project.image_cover?.alt" :style="{objectPosition: project.image_cover?.focus}">
 					</div>
 					<div class="col project-card-content">
 						<header class="project-card-header">

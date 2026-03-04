@@ -8,7 +8,7 @@
 				<div class="page-header-title">
 					<h1 class="h1">{{ page.title }}</h1>
 				</div>
-				<img v-if="page.image_cover" :src="page.image_cover.url" :alt="page.image_cover.alt" class="page-header-image">
+				<img v-if="page.image_cover" :src="page.image_cover.url" :alt="page.image_cover.alt" class="page-header-image" :style="{objectPosition: project.image_cover.focus}">
 			</header>
 			<Blocks :content="page.content || []" />
 		</main>

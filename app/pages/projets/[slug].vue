@@ -8,7 +8,7 @@
 				<div class="page-header-title">
 					<h1 class="h1">{{ project.title }}</h1>
 				</div>
-				<img :src="project.image_cover.url" :alt="project.image_cover.alt" class="page-header-image">
+				<img :src="project.image_cover.url" :alt="project.image_cover.alt" class="page-header-image" :style="{objectPosition: project.image_cover.focus}">
 			</header>
 			<section v-if="hasIntro" class="project-intro cols cols-align-start">
 				<div>
@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 	import type { CMS_API_Response, Project } from "#shared/cms_api";
-	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY } from "#shared/cms_queries";
+	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY, IMAGE_QUERY } from "#shared/cms_queries";
 
 	const route = useRoute();
 	const slug: string = route.params.slug;
@@ -71,7 +71,10 @@
 				caption: 'page.caption.smartypants',
 				intention: 'page.intention.smartypants',
 				description: 'page.description.smartypants',
-				image_cover: 'page.image_cover.toFile',
+				image_cover: {
+					query: 'page.image_cover.toFile',
+					select: IMAGE_QUERY
+				},
 				tags: {
 					query: 'page.tags.split',
 				},

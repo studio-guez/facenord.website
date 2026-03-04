@@ -3,12 +3,23 @@ export const TAG_QUERY = {
 	title: true
 }
 
+export const IMAGE_QUERY = {
+	url: true,
+	width: true,
+	height: true,
+	alt: true,
+	focus: true
+}
+
 export const PROJECT_HEADER_QUERY = {
 	id: true,
 	title: 'page.title.smartypants',
 	url: "page.uri",
 	caption: 'page.caption.smartypants',
-	image_cover: 'page.image_cover.toFile',
+	image_cover: {
+		query: 'page.image_cover.toFile',
+		select: IMAGE_QUERY
+	},
 	tags: {
 		query: 'page.tags.split'
 	}
