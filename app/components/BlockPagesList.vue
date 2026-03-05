@@ -16,6 +16,7 @@
 								<li v-for="tag in project.tags" class="tag">{{ tag }}</li>
 							</ul>
 							<h3 class="h3">{{ project.title }}</h3>
+							<NuxtLink class="link small" :to="project.url">Découvrir ↪</NuxtLink>
 						</header>
 						<div class="text small" v-html="project.caption"></div>
 					</div>

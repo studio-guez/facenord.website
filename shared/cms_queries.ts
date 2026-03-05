@@ -35,3 +35,15 @@ export const BLOCKS_QUERY = {
 		select: PROJECT_HEADER_QUERY
 	}
 }
+
+export const PAGE_HEADER_QUERY = {
+	id: true,
+	title: 'page.title.smartypants',
+	slug: true,
+	url: "page.uri",
+	caption: 'page.caption.smartypants',
+	image_cover: {
+		query: 'page.image_cover.toFile',
+		select: IMAGE_QUERY
+	}
+}
