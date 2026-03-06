@@ -4,6 +4,7 @@
 			<Title>{{ siteTitle }} | {{ project.title }}</Title>
 		</Head>
 		<main>
+			{{ project.untyped }}
 			<header class="page-header">
 				<div class="page-header-title">
 					<h1 class="h1">{{ project.title }}</h1>
@@ -45,20 +46,13 @@
 </template>
 
 <script setup lang="ts">
-	import type { CMS_API_Response, Project } from "#shared/cms_api";
 	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY, IMAGE_QUERY } from "#shared/cms_queries";
-
-	type FetchData = CMS_API_Response & {
-		"result": Project & {
-			related: Project[]
-		}
-	};
 	
 	const route = useRoute();
 	const slug: string = route.params.slug;
 	const siteTitle = useState<string>('siteTitle');
 
-	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
+	const {data, status} = await useFetch('/api/CMS_KQLRequest', {
 		method: 'POST',
 		body: {
 			query: `site.find('projets/${ slug }')`,

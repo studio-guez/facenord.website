@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-	import type CMS_API_Response from "#shared/cms_api";
 	import {BLOCKS_QUERY, PAGE_HEADER_QUERY } from "#shared/cms_queries";
 	import { useRoute, navigateTo } from '#app';
 
@@ -32,7 +31,7 @@
    const pathSegments = route.params.slug || [];
 	const fullPageSlug = pathSegments.join('/');
 
-	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
+	const {data, status} = await useFetch('/api/CMS_KQLRequest', {
    	method: 'POST',
     	body: {
 			query: `site.find('${ fullPageSlug }')`,

@@ -7,19 +7,9 @@
 </template>
 
 <script setup lang="ts">
-  import type {CMS_API_Response, MenuItem} from "#shared/cms_api";
-
-  type FetchData = CMS_API_Response & {
-    "result": {
-      "title": string,
-      "menuHead": MenuItem[],
-      "menuTail": MenuItem[]
-    }
-  }
-
   const siteTitle = useState<string>('siteTitle');
 
-  const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
+  const {data, status} = await useFetch('/api/CMS_KQLRequest', {
     method: 'POST',
     body: {
       query: "site",
@@ -47,7 +37,7 @@
 
   if (data.value) siteTitle.value = data.value.result.title;
 
-  const sortedMenu = computed((): MenuItem[] => {
+  const sortedMenu = computed(() => {
     return [...data.value?.result.menuHead, ...data.value?.result.menuTail];
   });
   
