@@ -12,7 +12,7 @@
 			</header>
 			<Blocks :content="page.content || []" />
 
-			<hr class="divider">
+			<hr v-if="page.children.length" class="divider">
 
 			<section v-if="page.children.length" class="section-children">
 				<BlockPagesList :projects="page.children"/>
