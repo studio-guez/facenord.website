@@ -53,6 +53,7 @@
 	const siteTitle = useState<string>('siteTitle');
 
 	const tags = ref([]);
+	const queryTags = route.query.tags;
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 		method: "POST",
@@ -74,7 +75,7 @@
 
 	watch(data, (newData) => {
 		tags.value = data.value?.result.tags.map(t => {
-			return {title: t.title, checked: false}
+			return {title: t.title, checked: queryTags.includes(t.id)}
 		});
 	}, {immediate: true});
 

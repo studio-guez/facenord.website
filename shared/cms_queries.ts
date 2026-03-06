@@ -1,5 +1,5 @@
 export const TAG_QUERY = {
-	id: true,
+	id: 'page.slug',
 	title: true
 }
 
