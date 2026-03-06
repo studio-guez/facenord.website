@@ -8,8 +8,14 @@
 			<template v-for="(card, i) in props.block.content.cards">
 				<div class="card-container">
 					<li class="card" :class="{'card-purple': isColorStyle}" :style="getAngles()">
-						<p class="mono" :class="{'small': !isColorStyle}" v-html="card.text"></p>
-						<p v-if="card.baseline" class="x-small mono">{{ card.baseline }}</p>
+						<NuxtLink v-if="card.tag" :to="`/projets?tags=${card.tag}`">
+							<p class="mono" :class="{'small': !isColorStyle}" v-html="card.text"></p>
+							<p v-if="card.baseline" class="x-small mono">{{ card.baseline }}</p>
+						</NuxtLink>
+						<template v-else>
+							<p class="mono" :class="{'small': !isColorStyle}" v-html="card.text"></p>
+							<p v-if="card.baseline" class="x-small mono">{{ card.baseline }}</p>
+						</template>
 					</li>
 					<div v-if="i < props.block.content.cards.length-1 && isColorStyle" class="card-arrow" :class="{top: !isEven(i), bottom: isEven(i)}" v-html="Arrow"></div>
 				</div>
