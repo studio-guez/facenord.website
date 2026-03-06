@@ -35,7 +35,7 @@
 				<Blocks :content="project.content || []" />
 			</div>
 
-			<hr class="divider">
+			<hr v-if="relatedProjects.length" class="divider">
 
 			<section v-if="relatedProjects.length" class="related">
 				<BlockPagesList :projects="relatedProjects" title="Quelques projets similaires" :link="{ label: 'Retour à la page projets', url:'/projets' }"/>
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-	import type { CMS_API_Response, Project, Tag } from "#shared/cms_api";
+	import type { CMS_API_Response, Project } from "#shared/cms_api";
 	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY, IMAGE_QUERY } from "#shared/cms_queries";
 
 	type FetchData = CMS_API_Response & {
@@ -87,26 +87,28 @@
 		}
 	});
 
-	const project = computed(() => data.value?.result.project);
+	const project = computed(() => data.value?.result);
 
 
 	const hasIntro = computed(() => {
 		return !!(project.value?.caption || project.value?.intention || project.value?.description);
 	});
 
-	// Fetch related projects
-	const tagList = computed(() => {
-		return project.value?.tags?.map(t => t.id) || [];
-	});
-
 	const { data: relatedData } = await useFetch<RelatedData>('/api/CMS_KQLRequest', {
 		method: 'POST',
 		lazy: true,
 		body: {
-			query:`site.find('projets/${slug}').siblings(false).filterBy('tags', 'typologie', ',')`,
+			query:`site.find('projets/${slug}').siblings(false)`,
 			select: PROJECT_HEADER_QUERY
 		}
 	});
 
-	const relatedProjects = computed(() => relatedData.value?.result || []);
+	const relatedProjects = computed(() => {
+		const currentTagIds = new Set(project.value?.tags?.map(t => t.id) || []);
+		const siblings = relatedData.value?.result || [];
+
+		if (!currentTagIds.size) return [];
+
+		return siblings.filter(p => p.tags?.some(t => currentTagIds.has(t.id)));
+	});
 </script>
