@@ -49,11 +49,9 @@
 	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY, IMAGE_QUERY } from "#shared/cms_queries";
 
 	type FetchData = CMS_API_Response & {
-		"result": Project
-	};
-
-	type RelatedData = CMS_API_Response & {
-		"result": Project[]
+		"result": Project & {
+			related: Project[]
+		}
 	};
 	
 	const route = useRoute();
@@ -83,6 +81,10 @@
 					query: 'page.content.content.toResolvedBlocks',
 					select: BLOCKS_QUERY
 				},
+				related: {
+					query: `page.siblings(false)`,
+					select: PROJECT_HEADER_QUERY
+				}
 			}
 		}
 	});
@@ -94,18 +96,9 @@
 		return !!(project.value?.caption || project.value?.intention || project.value?.description);
 	});
 
-	const { data: relatedData } = await useFetch<RelatedData>('/api/CMS_KQLRequest', {
-		method: 'POST',
-		lazy: true,
-		body: {
-			query:`site.find('projets/${slug}').siblings(false)`,
-			select: PROJECT_HEADER_QUERY
-		}
-	});
-
 	const relatedProjects = computed(() => {
 		const currentTagIds = new Set(project.value?.tags?.map(t => t.id) || []);
-		const siblings = relatedData.value?.result || [];
+		const siblings = project.value?.related || [];
 
 		if (!currentTagIds.size) return [];
 
