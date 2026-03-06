@@ -23,7 +23,7 @@
 						<div class="project-card-content col">
 							<header class="project-card-header">
 								<ul class="tag-list">
-									<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.includes(tag) }">{{ tag }}</li>
+									<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.some(t => t.id == tag.id) }">{{ tag.title }}</li>
 								</ul>
 								<h3 class="h3">{{ project.title }}</h3>
 								<NuxtLink class="link small" :to="'/' + project.url">Découvrir le projet ↪</NuxtLink>
@@ -49,11 +49,13 @@
 		}
 	};
 
-	const route = useRoute();
-	const siteTitle = useState<string>('siteTitle');
+	type ProjectTag = { id: string; title: string; checked: boolean };
 
-	const tags = ref([]);
-	const queryTags = route.query.tags;
+	const route = useRoute();
+	const router = useRouter();
+	const siteTitle = useState<string>('siteTitle');
+	const tags = ref<Tag[]>([]);
+	const queryTags = route.query.tags || [];
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 		method: "POST",
@@ -73,21 +75,48 @@
 		}
 	});
 
-	watch(data, (newData) => {
-		tags.value = data.value?.result.tags.map(t => {
-			return {title: t.title, checked: queryTags.includes(t.id)}
-		});
+	watch(data, (newData) => { 
+		tags.value = data.value?.result.tags.map(t => { 
+			return { 
+				id: t.id, 
+				title: t.title, 
+				checked: queryTags.includes(t.id) 
+			}; 
+		}); 
 	}, {immediate: true});
 
+	const projects = computed(() => {
+		return data.value?.result.projects;
+	});
+
+	watch(() => tags.value.filter(tag => tag.checked).map(tag => tag.id),
+		(selectedIds) => {
+			const currentIds = queryTags;
+			const sameSelection =
+				currentIds.length === selectedIds.length &&
+				currentIds.every((id, index) => id === selectedIds[index]);
+			if (sameSelection) return;
+
+			const nextQuery = { ...route.query };
+			if (selectedIds.length) {
+				nextQuery.tags = selectedIds;
+			} else {
+				delete nextQuery.tags;
+			}
+
+			router.replace({ query: nextQuery });
+		}
+	);
+
 	const activeTags = computed(() => {
-		return tags.value?.filter(t => t.checked).map(t => t.title) || [];
+		return tags.value.filter(t => t.checked) || [];
 	});
 
 	const filteredProjects = computed(() => {
 		if (!activeTags.value?.length) {
-			return data.value?.result.projects;
+			return projects.value;
 		} else {
-			return data.value?.result.projects.filter(p => p.tags.some(t => activeTags.value.includes(t)));	
+			return projects.value.filter(p => p.tags.some(t => activeTags.value.map(t => t.id).includes(t.id)));
 		}
 	});
 

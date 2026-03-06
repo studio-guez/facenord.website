@@ -21,7 +21,8 @@ export const PROJECT_HEADER_QUERY = {
 		select: IMAGE_QUERY
 	},
 	tags: {
-		query: 'page.tags.split'
+		query: 'page.tags.toPages',
+		select: TAG_QUERY
 	}
 }
 

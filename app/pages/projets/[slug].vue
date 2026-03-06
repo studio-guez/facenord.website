@@ -23,7 +23,7 @@
 				</div>
 				<div v-if="project.description"class="col col-text col-with-padding">
 					<ul v-if="project.tags.length" class="tag-list">
-						<li v-for="tag in project.tags" class="tag">{{ tag }}</li>
+						<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
 					</ul>
 					<div class="text" v-html="project.description"></div>
 				</div>
@@ -45,12 +45,8 @@
 </template>
 
 <script setup lang="ts">
-	import type { CMS_API_Response, Project } from "#shared/cms_api";
+	import type { CMS_API_Response, Project, Tag } from "#shared/cms_api";
 	import { TAG_QUERY, PROJECT_HEADER_QUERY, BLOCKS_QUERY, IMAGE_QUERY } from "#shared/cms_queries";
-
-	const route = useRoute();
-	const slug: string = route.params.slug;
-	const siteTitle = useState<string>('siteTitle');
 
 	type FetchData = CMS_API_Response & {
 		"result": Project
@@ -59,6 +55,10 @@
 	type RelatedData = CMS_API_Response & {
 		"result": Project[]
 	};
+	
+	const route = useRoute();
+	const slug: string = route.params.slug;
+	const siteTitle = useState<string>('siteTitle');
 
 	const {data, status} = await useFetch<FetchData>('/api/CMS_KQLRequest', {
 		method: 'POST',
@@ -76,7 +76,8 @@
 					select: IMAGE_QUERY
 				},
 				tags: {
-					query: 'page.tags.split',
+					query: 'page.tags.toPages',
+					select: TAG_QUERY
 				},
 				content: {
 					query: 'page.content.content.toResolvedBlocks',
