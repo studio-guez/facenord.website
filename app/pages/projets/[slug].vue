@@ -87,7 +87,8 @@
 		}
 	});
 
-	const project = computed(() => data.value?.result);
+	const project = computed(() => data.value?.result.project);
+
 
 	const hasIntro = computed(() => {
 		return !!(project.value?.caption || project.value?.intention || project.value?.description);
