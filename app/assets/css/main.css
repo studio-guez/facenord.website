@@ -648,6 +648,42 @@ a:hover .project-card-image img {
 	margin-bottom: 1em;
 }
 
+.project-intro-header {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+}
+
+.project-patterns {
+	flex: 1;
+	position: relative;
+	overflow: hidden;
+}
+
+.project-pattern {
+	position: absolute;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+}
+
+.project-pattern svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.project-pattern.purple {
+	mix-blend-mode: multiply;
+}
+
+.project-pattern.purple svg * {
+	fill: var(--purple) !important;
+	stroke: var(--purple) !important;
+}
+
 .section-podcast {
 	background: white;
 	border-bottom: var(--border) solid var(--grey);
