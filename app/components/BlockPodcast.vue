@@ -1,7 +1,7 @@
 <template>
 	<section v-if="props.block.content.titre || embedUrl" class="section-podcast">
 		<header v-if="props.block.content.titre" class="section-header">
-			<h2 class="h2 purple">{{ props.block.content.titre }}</h2>
+			<h2 class="h2 purple" v-html="props.block.content.titre"></h2>
 		</header>
 
 		<div v-if="embedUrl" class="section-podcast-content">

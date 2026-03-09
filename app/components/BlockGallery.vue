@@ -1,7 +1,7 @@
 <template>
 	<section class="section-gallery">
 		<header v-if="props.block.content.titre" class="section-header">
-			<h2 class="h2 purple">{{ props.block.content.titre }}</h2>
+			<h2 class="h2 purple" v-html="props.block.content.titre"></h2>
 		</header>
 		<div class="gallery gallery-image" ref="gallery">
 			<button class="gallery-prev" v-html="IconPrev"></button>

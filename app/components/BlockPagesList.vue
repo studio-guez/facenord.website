@@ -1,6 +1,6 @@
 <template>
 	<header v-if="props.title" class="section-header">
-		<h2 class="h2 purple">{{ props.title }}</h2>
+		<h2 class="h2 purple" v-html="props.title"></h2>
 	</header>
 	<div class="gallery gallery-card" ref="gallery">
 		<button class="gallery-prev" v-html="IconPrev"></button>
