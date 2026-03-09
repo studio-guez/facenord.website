@@ -113,9 +113,10 @@
 /* Header */
 
 .site-header {
+	position: relative;
 	font-size: .8rem;
 	padding: .6rem;
-	aspect-ratio: 12/2;
+	aspect-ratio: var(--cols)/2;
 	overflow: hidden;
 	padding-top: calc(1lh + .3rem + .6rem + .25rem);
 	border-bottom: var(--border) solid var(--grey);
@@ -129,6 +130,14 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 	z-index: 3;
+}
+
+.site-logo {
+	position: absolute;
+  left: .6rem;
+  right: .6rem;
+  top: 30%;
+  margin-top: auto;
 }
 
 .site-logo svg {
@@ -436,8 +445,8 @@
 
 .card {
 	flex-shrink: 0;
-	width: 27vw;
-	min-height: 18vw;
+	width: 10.25em;
+	min-height: 7em;
 	padding: .733rem;
 	border-radius: 2rem;
 	border: calc(var(--border)/2) solid black;
@@ -623,6 +632,11 @@ a:hover .project-card-image img {
 	border-bottom: var(--border) solid var(--grey);
 }
 
+.section-image {
+	background: white;
+	border-bottom: var(--border) solid var(--grey);
+}
+
 
 /* Page: Project single */
 
@@ -654,4 +668,54 @@ a:hover .project-card-image img {
 
 .section-footer * + * {
 	margin-top: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+	:root {
+		font-size: 28px;
+		--cols: 9;
+	}
+
+	.cols {
+		grid-template-columns: calc((var(--col) - var(--border)/var(--cols))*4) auto;		
+	}
+}
+
+@media (max-width: 768px) {
+	:root {
+		font-size: 24px;
+		--cols: 7;
+	}
+
+	.cols {
+		grid-template-columns: calc((var(--col) - var(--border)/var(--cols))*3) auto;		
+	}
+
+	.site-logo {
+		top: 45%;
+	}
+
+	.card-list {
+		height: calc(var(--col)*3);
+	}
+}
+
+@media (max-width: 600px) {
+	:root {
+		font-size: 22px;
+		--cols: 5;
+	}
+
+	.cols {
+		grid-template-columns: 1fr;
+		grid-auto-rows: auto;
+	}
+
+	.col:not(:last-child) {
+		border-bottom: var(--border) solid var(--grey);
+	}
+
+	.site-logo {
+		top: 56%;
+	}
 }
