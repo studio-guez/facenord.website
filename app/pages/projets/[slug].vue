@@ -4,7 +4,6 @@
 			<Title>{{ siteTitle }} | {{ project.title }}</Title>
 		</Head>
 		<main>
-			{{ project.untyped }}
 			<header class="page-header">
 				<div class="page-header-title">
 					<h1 class="h1">{{ project.title }}</h1>
