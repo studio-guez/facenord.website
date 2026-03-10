@@ -25,7 +25,8 @@
 		</ul>
 		<button class="gallery-next" v-html="IconNext"></button>
 	</div>
-	<footer v-if="props.link" class="section-footer">
+	<footer v-if="props.link.url" class="section-footer">
+		<pre>{{props.link}}</pre>
 		<NuxtLink class="small" :to="props.link.url">{{ props.link.label }} ↪</NuxtLink>
 	</footer>
 </template>
