@@ -22,7 +22,7 @@
 						</div>
 						<div class="project-card-content col">
 							<header class="project-card-header">
-								<ul class="tag-list">
+								<ul v-if="project.tags.length" class="tag-list">
 									<li v-for="tag in project.tags" class="tag" :class="{ active: activeTags.some(t => t.id == tag.id) }">{{ tag.title }}</li>
 								</ul>
 								<h3 class="h3">{{ project.title }}</h3>
