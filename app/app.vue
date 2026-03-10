@@ -2,7 +2,7 @@
   <div class="site-wrapper grid-background">
     <Header :menu="sortedMenu"/>
     <NuxtPage/>
-    <Footer />
+    <Footer :address="data.result?.footer_address" :links="data.result?.footer_links"/>
   </div>
 </template>
 
@@ -24,11 +24,19 @@
           }
         },
         menuTail: {
-          query: "site.children.listed.not('home', 'projets', 'tags')",
+          query: "site.children.listed.not('home', 'projets', 'tags').filterBy('show_in_menu', true)",
           select: {
             title: true,
             url: "page.uri",
-            slug: 'page.slug'
+            slug: 'page.slug',
+          }
+        },
+        footer_address: true,
+        footer_links: {
+          query: 'site.footer_links.toPages',
+          select: {
+            url: 'page.uri',
+            title: 'page.title'
           }
         }
       }

@@ -172,6 +172,18 @@
 	background: var(--beige);
 	padding: 0.22rem 0.733rem;
 	z-index: 5;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.site-footer-links {
+	display: flex;
+	gap: 1em;
+}
+
+.site-footer-links a:hover {
+	color: var(--purple);
 }
 
 
