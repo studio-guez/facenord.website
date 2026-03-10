@@ -543,7 +543,7 @@
 .tag label {
 	padding: 0.2rem 0.4rem;
 	display: flex;
-	align-items: baseline;
+	align-items: flex-end;
 	cursor: pointer;
 }
 
@@ -556,9 +556,10 @@
 .tag:has(input:checked) label:after {
 	content: "";
 	display: block;
-	width: 1em;
-	height: 1em;
+	width: 1.2em;
+	height: 1.2em;
 	background-image: url('~/assets/svg/close.svg');
+	background-size: 100% 100%;
 }
 
 .tag:has(input:checked):hover {
@@ -764,6 +765,15 @@ a:hover .project-card-image img {
 
 	.card-list {
 		height: calc(var(--col)*3);
+	}
+
+	.text-container,
+	.image-container {
+		padding: 0.733rem;
+	}
+
+	.tag {
+		font-size: 0.533rem;
 	}
 }
 
