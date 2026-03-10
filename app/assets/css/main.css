@@ -238,7 +238,7 @@
 }
 
 .col-with-padding {
-	padding-bottom: 3rem;
+	padding-bottom: 2rem;
 }
 
 .cols .col {
@@ -255,6 +255,8 @@
 	padding: .733rem;
 	background: white;
 	border-bottom: var(--border) solid var(--grey);
+	border-left: var(--border) solid var(--grey);
+	border-right: var(--border) solid var(--grey);
 }
 
 .section-footer a:hover {
@@ -657,7 +659,7 @@ a:hover .project-card-image img {
 }
 
 .project-intro .h2 {
-	margin-bottom: 1em;
+	margin-bottom: 0.533em;
 }
 
 .project-intro-header {
