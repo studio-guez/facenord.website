@@ -67,7 +67,7 @@
 }
 
 .small {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 }
 
 .x-small {
@@ -107,6 +107,14 @@
 
 .text * + p {
 	margin-top: 0.9em;
+}
+
+.text a {
+	color: var(--purple);
+}
+
+.text a:hover {
+	color: black;
 }
 
 
@@ -254,10 +262,9 @@
 }
 
 .section-caption {
-	text-align: center;
-	padding: .433rem;
+	text-align: left;
+	padding: .733rem;
 	background: white;
-	border-bottom: var(--border) solid var(--grey);
 }
 
 .divider {
@@ -633,6 +640,11 @@ a:hover .project-card-image img {
 }
 
 .section-image {
+	background: white;
+	border-bottom: var(--border) solid var(--grey);
+}
+
+.section-gallery {
 	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
