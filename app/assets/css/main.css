@@ -388,8 +388,13 @@
 	flex-shrink: 0;
 }
 
+.gallery-item:first-child {
+	padding-left: .733rem;
+}
+
 .gallery-image .gallery-items {
 	padding: .733rem;
+	padding-left: 0;
 	gap: 0.633rem;
 }
 
