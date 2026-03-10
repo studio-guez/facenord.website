@@ -267,6 +267,7 @@
 	text-align: left;
 	padding: .733rem;
 	background: white;
+	border-bottom: var(--border) solid var(--grey);
 }
 
 .divider {
@@ -388,7 +389,7 @@
 	flex-shrink: 0;
 }
 
-.gallery-item:first-child {
+.gallery-image .gallery-item:first-child {
 	padding-left: .733rem;
 }
 
@@ -646,14 +647,25 @@ a:hover .project-card-image img {
 	border-bottom: var(--border) solid var(--grey);
 }
 
-.section-image {
+.image-container {
 	background: white;
+	padding: 0.733rem calc(0.733rem + var(--col));
 	border-bottom: var(--border) solid var(--grey);
+}
+
+.image-container.full-width {
+	padding: 0;
 }
 
 .section-gallery {
 	background: white;
 	/*border-bottom: var(--border) solid var(--grey);*/
+}
+
+.text-container {
+	background: white;
+	padding: 0.733rem calc(0.733rem + var(--col));
+	border-bottom: var(--border) solid var(--grey);
 }
 
 
