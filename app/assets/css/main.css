@@ -653,7 +653,7 @@ a:hover .project-card-image img {
 
 .section-gallery {
 	background: white;
-	border-bottom: var(--border) solid var(--grey);
+	/*border-bottom: var(--border) solid var(--grey);*/
 }
 
 
