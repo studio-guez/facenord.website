@@ -33,7 +33,7 @@ export const useGallery = function(elRef) {
 	         return Math.abs(scroller.scrollLeft - prev.offsetLeft) < Math.abs(scroller.scrollLeft - curr.offsetLeft) ? prev : curr;
 	      });
 
-	      const prevScrollPos = current?.previousElementSibling?.offsetLeft;
+	      const prevScrollPos = current?.previousElementSibling?.offsetLeft || 0;
 
 	      if (prevScrollPos !== undefined) {
 	         scroller.scrollTo({ left: prevScrollPos - padding });
