@@ -29,7 +29,7 @@
 		</template>
 
 		<template v-else-if="block.type === 'pages_list'">
-        <BlockPagesList v-if="block.pages.length" :projects="block.pages" :title="block.content.titre" :link="{label: block.content.link_label, url: block.content.link?.length ? '/' + block.cintent.link[0].uri : undefined}" />
+        <BlockPagesList v-if="block.pages.length" :projects="block.pages" :title="block.content.titre" :link="{label: block.content.link_label, url: block.content.link?.length ? '/' + block.content.link[0].uri : undefined}" />
       </template>
 
       <template v-else-if="block.type === 'profiles'">
