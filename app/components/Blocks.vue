@@ -1,5 +1,5 @@
 <template>
-	<template v-for="block in props.content" :key="block.id">
+	<template v-for="block in blocks" :key="block.id">
 		<template v-if="block.type === 'gallery'">
 			<BlockGallery :block="block" />
 		</template>
@@ -18,6 +18,10 @@
 
 		<template v-else-if="block.type === 'image'">
 			<BlockImage :block="block" />
+		</template>
+
+		<template v-else-if="block.type === 'text-group'">
+			<BlockTextGroup :blocks="block.content" />
 		</template>
 
 		<template v-else-if="block.type === 'cards'">
@@ -57,4 +61,24 @@
 		content: Block[]
 	}>();
 	
+	const blocks = computed(() => {
+		return props.content.reduce((acc, current) => {
+			const lastBlock = acc[acc.length-1];
+
+			if ((current.type == 'text' && !current.content.title) || (current.type == 'image' && current.content.full_width == 'false')) {
+				if (lastBlock && lastBlock.type === 'text-group') {
+      			lastBlock.content.push(current);
+      		} else {
+      			acc.push({
+						type: 'text-group',
+						content: [current]
+					});
+      		}				
+			} else {
+				acc.push(current);
+			}
+
+			return acc;
+		}, []);
+	});
 </script>
