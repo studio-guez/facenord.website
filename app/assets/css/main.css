@@ -725,6 +725,7 @@ a:hover .project-card-image img {
 
 .project-pattern.purple {
 	mix-blend-mode: multiply;
+	z-index: 1;
 }
 
 .project-pattern.purple svg * {

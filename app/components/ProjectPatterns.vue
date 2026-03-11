@@ -31,27 +31,10 @@
 		id: string;
 		svgMarkup: string;
 		bottomPercent: number;
-		gridOffsetUnits: number;
 		isPurple: boolean;
 	};
 
-	const patternMarkupList: string[] = [
-		pattern01,
-		pattern02,
-		pattern03,
-		pattern04,
-		pattern05,
-		pattern06,
-		pattern07,
-		pattern08,
-		pattern09,
-		pattern10,
-		pattern11,
-		pattern12,
-		pattern13,
-		pattern14,
-		pattern15
-	];
+	const patternMarkupList: string[] = [pattern01, pattern02, pattern03, pattern04, pattern05, pattern06, pattern07, pattern08, pattern09, pattern10, pattern11, pattern12, pattern13, pattern14, pattern15];
 
 	const patterns = ref<PatternItem[]>([]);
 	const patternsContainer = ref<HTMLElement | null>(null);
@@ -60,34 +43,38 @@
 
 	function createPattern(existingPatterns: PatternItem[]): PatternItem {
 		const count = existingPatterns.length;
-		const isPurple = count >= 2 && existingPatterns[count - 1].isPurple === existingPatterns[count - 2].isPurple
-			? !existingPatterns[count - 1].isPurple
-			: Math.random() < 0.5;
+		const isPurple = patternIdSequence % 2 == 0;
 
 		return {
 			id: `pattern-${patternIdSequence += 1}`,
 			svgMarkup: patternMarkupList[Math.floor(Math.random() * patternMarkupList.length)],
 			bottomPercent: 0,
-			gridOffsetUnits: Math.round(-1 + Math.random() * 2),
 			isPurple
 		};
 	}
 
-	function distributePatternsEvenly(items: PatternItem[], containerHeight: number): PatternItem[] {
+	function distributePatterns(items: PatternItem[], containerWidth: number, containerHeight: number): PatternItem[] {
 		const count = items.length;
-		const stepPx = containerHeight / count;
 		const colsValue = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cols'));
 		const cols = colsValue > 0 ? colsValue : 1;
-		const gridUnitPx = window.innerWidth / cols;
+		const gridUnit = window.innerWidth / cols;
+		let currentPos = 0;
 
 		return items.map((pattern, index) => {
-			const basePx = Math.round((stepPx * index) / gridUnitPx) * gridUnitPx;
-			const offsetPx = index === 0 ? 0 : pattern.gridOffsetUnits * gridUnitPx;
-			const bottomPx = basePx + offsetPx;
+			const offset = index % 2 == 0 ? 0 : -Math.ceil((0.5 + Math.random())) * gridUnit;
+			currentPos += offset;
+
+			if (index > 0) {
+				currentPos += containerWidth;
+
+				if (index % 2 == 0) {
+					currentPos += gridUnit * Math.ceil(Math.random()*2);
+				}
+			}
 
 			return {
 				...pattern,
-				bottomPercent: (bottomPx / containerHeight) * 100
+				bottomPercent: (currentPos / containerHeight) * 100
 			};
 		});
 	}
@@ -95,7 +82,7 @@
 	function recomputePatterns(): void {
 		const containerHeight = patternsContainer.value?.clientHeight || 0;
 		const containerWidth = patternsContainer.value?.clientWidth || 0;
-		const targetCount = Math.round(containerHeight / containerWidth);
+		const targetCount = Math.ceil(containerHeight / containerWidth);
 
 		if (!containerHeight || !containerWidth || targetCount <= 0) {
 			patterns.value = [];
@@ -112,7 +99,7 @@
 			nextPatterns.push(createPattern(nextPatterns));
 		}
 
-		patterns.value = distributePatternsEvenly(nextPatterns, containerHeight);
+		patterns.value = distributePatterns(nextPatterns, containerWidth, containerHeight);
 	}
 
 	onMounted(() => {
