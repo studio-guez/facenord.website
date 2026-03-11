@@ -10,7 +10,7 @@
 				</template>
 				<template v-else-if="block.type === 'image'">
 					<figure class="col">
-						<Image :image="props.block.content.image[0]" />
+						<Image :image="block.content.image[0]" />
 						<figcaption v-if="block.content.caption || block.content.credits" class="section-caption">
 							<div v-if="block.content.caption" class="text small" v-html="block.content.caption"></div>
 							<div v-if="block.content.credits" class="text x-small mono" v-html="block.content.credits"></div>
