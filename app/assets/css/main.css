@@ -35,6 +35,7 @@
 	--purple: rgba(87, 0, 255, 1);
 	--purple-dark: rgba(66, 0, 210, 1);
 	--grey: rgba(216, 216, 216, 1);
+	--grey-dark: rgba(196, 196, 196);
 	--beige: rgba(234, 219, 206, 1);
 	--beige-dark: rgba(225, 207, 191, 1);
 
@@ -71,7 +72,8 @@
 }
 
 .x-small {
-	font-size: 0.533rem;
+	font-size: 0.5rem;
+	font-weight: 500;
 }
 
 .mono {
@@ -88,6 +90,10 @@
 
 .purple {
 	color: var(--purple);
+}
+
+.grey {
+	color: var(--grey-dark);
 }
 
 .uppercase {
@@ -528,7 +534,7 @@
 }
 
 .tag {
-	font-size: 0.466rem;
+	font-size: 0.5rem;
 	background: var(--beige);
 	color: var(--purple);
 	border-radius: 2rem;
@@ -696,6 +702,10 @@ a:hover .project-card-image img {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
+}
+
+.project-meta {
+	margin-bottom: 1rem;
 }
 
 .project-patterns {

@@ -36,6 +36,13 @@
 					<ul v-if="project.tags.length" class="tag-list">
 						<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
 					</ul>
+					<div class="project-meta">
+						<div v-if="project.current || project.date">
+							<span class="x-small purple">{{ project.blueprint.fields.current.options.find(o => o.value == project.current)?.text }}
+							</span>
+							<span class="x-small grey"> — {{ project.date }}</span>
+							</div>
+					</div>
 					<div class="text" v-html="project.description"></div>
 				</div>
 			</section>
@@ -113,12 +120,15 @@
 		body: {
 			query: `site.find('projets/${ slug }')`,
 			select: {
+				blueprint: true,
 				id: true,
 				title: 'page.title.smartypants',
 				url: "page.uri",
 				caption: 'page.caption.smartypants',
 				intention: 'page.intention.smartypants',
 				description: 'page.description.smartypants',
+				current: true,
+				date: true,
 				image_cover: {
 					query: 'page.image_cover.toFile',
 					select: IMAGE_QUERY
