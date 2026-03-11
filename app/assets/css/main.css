@@ -85,7 +85,8 @@
 }
 
 .link:hover {
-	color: black;
+	color: var(--purple-dark);
+	text-decoration: underline;
 }
 
 .purple {
@@ -120,7 +121,8 @@
 }
 
 .text a:hover {
-	color: black;
+	color: var(--purple-dark);
+	text-decoration: underline;
 }
 
 
