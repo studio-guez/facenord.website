@@ -4,8 +4,8 @@
 			<h2 class="h2 purple" v-html="props.block.content.titre"></h2>
 		</header>
 
-		<ul v-if="props.block.content.cards.length" class="card-list grid-background">
-			<template v-for="(card, i) in props.block.content.cards">
+		<ul v-if="cards.length" class="card-list grid-background">
+			<template v-for="(card, i) in cards">
 				<div class="card-container">
 					<li class="card" :class="{'card-purple': isColorStyle}" :style="getAngles()">
 						<NuxtLink v-if="card.tag" :to="`/projets?tags=${card.tag}`">
@@ -47,6 +47,11 @@
 			'--hover-angle': `${hover}deg`
 		};
 	};
+
+	const cards = computed(() => {
+		if (!props.block.content.shuffle || props.block.content.shuffle == 'false') return props.block.content.cards;
+		return [...props.block.content.cards].sort(() => Math.random() - 0.5);
+	});
 </script>
 
 <style scoped>
