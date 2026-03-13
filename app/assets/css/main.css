@@ -779,7 +779,12 @@ a:hover .project-card-image img {
 	}
 
 	.cols {
-		grid-template-columns: calc((var(--col) - var(--border)/var(--cols))*3) auto;		
+		grid-template-columns: 1fr;
+		grid-auto-rows: auto;
+	}
+
+	.col:not(:last-child) {
+		border-bottom: var(--border) solid var(--grey);
 	}
 
 	.site-logo {
@@ -804,15 +809,6 @@ a:hover .project-card-image img {
 	:root {
 		font-size: 22px;
 		--cols: 5;
-	}
-
-	.cols {
-		grid-template-columns: 1fr;
-		grid-auto-rows: auto;
-	}
-
-	.col:not(:last-child) {
-		border-bottom: var(--border) solid var(--grey);
 	}
 
 	.site-logo {
