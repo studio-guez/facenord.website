@@ -9,7 +9,7 @@
 		</button>
 		<nav class="site-menu" :class="{open: showMenu}">
 			<li v-for="item in menu">
-				<NuxtLink class="btn uppercase" :class="{ active: item.slug == slug }" :to="item.url == '/' ? '/' : '/' + item.url ">{{ item.title }}</NuxtLink>
+				<NuxtLink class="btn uppercase" :class="{ active: item.slug == slug }" :to="item.url == '/' ? '/' : '/' + item.url " @click="hideMenu">{{ item.title }}</NuxtLink>
 			</li>
 		</nav>
 		<div class="site-logo" v-html="Logo"></div>
@@ -32,9 +32,9 @@
 		showMenu.value = !showMenu.value;
 	}
 
-	watch(() => route.fullPath, () => {
+	function hideMenu() {
 		showMenu.value = false;
-	});
+	}
 
 	watch(showMenu, (isOpen) => {
 		if (isOpen) {
