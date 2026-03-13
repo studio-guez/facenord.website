@@ -169,7 +169,8 @@
 
 .site-mobile-menu-toggle {
 	display: none;
-	position: absolute;
+	position: fixed;
+	background: white;
 	top: var(--border);
 	right: var(--border);
 	width: calc(var(--col) - var(--border)*3);
