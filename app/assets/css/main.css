@@ -195,11 +195,6 @@
 	gap: 1em;
 }
 
-.site-footer-links a:hover {
-	color: var(--purple);
-}
-
-
 /* Layout */
 
 .site-wrapper {
@@ -326,11 +321,11 @@
 	align-items: center;
 	border: calc(var(--border)/2) solid var(--purple);
 	background: white;
-	min-width: 5rem;
-	padding: .2rem .733rem;;
+	min-width: 6.25em;
+	padding: .25em .916em;;
 	color: var(--purple);
 	white-space: nowrap;
-	border-radius: 2rem;
+	border-radius: 2.5em;
 	cursor: pointer;
 }
 
@@ -354,6 +349,14 @@
 	background: black;
 }
 
+.btn.btn-small {
+	font-size: 0.5rem;
+}
+
+.btn-small {
+	background: transparent;
+}
+
 
 /* Component - Gallery */
 
@@ -363,6 +366,8 @@
 	background: white;
 	border-bottom: var(--border) solid var(--grey);
 }
+
+
 
 .gallery::before, 
 .gallery::after {
@@ -410,7 +415,12 @@
 	overscroll-behavior-x: contain; 
 	scroll-snap-type: x proximity;
 	scroll-behavior: smooth;
-	scrollbar-color: var(--purple) transparent;
+	-ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gallery-items::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery-item {
@@ -484,7 +494,12 @@
 	align-items: center;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	scrollbar-color: var(--purple) transparent;
+	-ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-list::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -800,8 +815,21 @@ a:hover .project-card-image img {
 		padding: 0.733rem;
 	}
 
-	.tag {
-		font-size: 0.533rem;
+
+	.h1 {
+		font-size: 1.75rem;
+	}
+
+	.h2 {
+		font-size: 1.2rem;
+	}
+
+	.h3 {
+		font-size: 1.2rem;
+	}
+
+	.small {
+		font-size: 0.8rem;
 	}
 }
 
@@ -813,5 +841,11 @@ a:hover .project-card-image img {
 
 	.site-logo {
 		top: 56%;
+	}
+}
+
+@media (max-width: 480px) {
+	:root {
+		font-size: 20px;
 	}
 }

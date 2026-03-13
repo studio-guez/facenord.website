@@ -8,7 +8,7 @@
 				<div class="page-header-title">
 					<h1 class="h1">{{ project.title }}</h1>
 				</div>
-				<img :src="project.image_cover.url" :alt="project.image_cover.alt" class="page-header-image" :style="{objectPosition: project.image_cover.focus}">
+				<Image :image="project.image_cover" class="page-header-image"/>
 			</header>
 			<section v-if="hasIntro" class="project-intro cols cols-align-start">
 				<div class="project-intro-header">

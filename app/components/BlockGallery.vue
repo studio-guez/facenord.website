@@ -7,7 +7,7 @@
 			<button class="gallery-prev" v-html="IconPrev"></button>
 			<ul class="gallery-items">
 				<li v-for="image in props.block.content.images" class="gallery-item">
-					<img :src="image.url" :alt="image.alt" :width="image.width" :height="image.height">
+					<Image :image="image" />
 				</li>
 			</ul>
 			<button class="gallery-next" v-html="IconNext"></button>

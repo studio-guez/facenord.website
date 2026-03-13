@@ -18,7 +18,7 @@
 				<li class="project-card cols">
 					<NuxtLink :to="project.url" style="display: contents">
 						<div class="project-card-image col">
-							<img :id="project.image_cover.id" :src="project.image_cover.url" :alt="project.image_cover.alt" :style="{objectPosition: project.image_cover.focus}">
+							<Image :image="project.image_cover"/>
 						</div>
 						<div class="project-card-content col">
 							<header class="project-card-header">

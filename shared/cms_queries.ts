@@ -8,7 +8,8 @@ export const IMAGE_QUERY = {
 	width: true,
 	height: true,
 	alt: true,
-	focus: true
+	focus: true,
+	srcset: true
 }
 
 export const PROJECT_HEADER_QUERY = {
