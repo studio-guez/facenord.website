@@ -38,6 +38,8 @@
 		margin-right: 2vw;
 		margin-top: 1.25rem;
 		margin-left: auto;
+		position: relative;
+		z-index: 1;
 	}
 
 	.contact-btn:hover {
@@ -54,6 +56,13 @@
 		width: 7rem;
 		margin-bottom: 1rem;
 		z-index: 0;
+	}
+
+	@media (max-width: 768px) {
+		.map-arrow {
+			top: 0.5rem;
+			transform: scale(-1, 1) rotate(120deg)
+		}
 	}
 
 </style>
