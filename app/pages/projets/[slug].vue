@@ -35,8 +35,6 @@
 				</div>
 			</section>
 
-			<hr v-if="project.content.length" class="divider">
-
 			<div class="blocks">
 				<Blocks :content="project.content || []" />
 			</div>
