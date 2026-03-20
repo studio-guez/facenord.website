@@ -171,9 +171,9 @@
 	display: none;
 	position: fixed;
 	background: white;
-	top: var(--border);
-	right: var(--border);
-	width: calc(var(--col) - var(--border)*3);
+	top: calc(var(--border)*4);
+	right: calc(var(--border)*4);
+	width: calc(var(--col) - var(--border)*8);
 	border: calc(var(--border)/2) solid var(--purple);
 	border-radius: 50%;
 	padding: calc(var(--col)/5);
