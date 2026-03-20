@@ -29,7 +29,7 @@
 					<div class="project-meta" v-if="project.current || project.date">
 						<span class="x-small purple">{{ project.blueprint.fields.current.options.find(o => o.value == project.current)?.text }}
 						</span>
-						<span class="x-small grey"> — {{ project.date }}</span>
+						<span class="x-small grey" v-if="project.date"> — {{ project.date }}</span>
 					</div>
 					<div class="text" v-html="project.description"></div>
 				</div>
