@@ -12,7 +12,9 @@
 				<NuxtLink class="btn uppercase" :class="{ active: item.slug == slug }" :to="item.url == '/' ? '/' : '/' + item.url " @click="hideMenu">{{ item.title }}</NuxtLink>
 			</li>
 		</nav>
-		<div class="site-logo" v-html="Logo"></div>
+		<NuxtLink class="site-logo" to="/">
+			<template v-html="Logo"></template>
+		</NuxtLink>
 	</header>
 </template>
 

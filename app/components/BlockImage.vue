@@ -4,8 +4,8 @@
 			<div class="image-container">
 				<Image :image="props.block.content.image[0]" />
 			</div>
-			<figcaption v-if="props.block.content.caption || props.block.content.credits" class="section-caption">
-				<div v-if="props.block.content.caption" class="text small" v-html="props.block.content.caption"></div>
+			<figcaption v-if="props.block.content.caption || props.block.content.credits" class="section-caption small">
+				<div v-if="props.block.content.caption" class="text" v-html="props.block.content.caption"></div>
 				<div v-if="props.block.content.credits" class="text x-small mono" v-html="props.block.content.credits"></div>
 			</figcaption>
 		</figure>

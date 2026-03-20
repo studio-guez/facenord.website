@@ -49,21 +49,25 @@
 :root {
 	font-family: "IBM Plex Sans";
 	font-size: 30px;
+	line-height: 1.32;
 }
 
 .h1 {
 	font-family: IBM Plex Mono;
 	font-size: 2.15rem;
+	line-height: 1.1;
 	text-transform: uppercase;
 }
 
 .h2 {
 	font-size: 1.33rem;
+	line-height: 1.2;
 }
 
 .h3 {
 	font-family: IBM Plex Mono;
 	font-size: 1.33rem;
+	line-height: 1.1;
 	text-transform: uppercase;
 }
 
@@ -102,7 +106,6 @@
 }
 
 .text h4 {
-	font-weight: 500;
 	color: var(--purple);
 }
 
@@ -157,7 +160,7 @@
 	position: absolute;
   left: .6rem;
   right: .6rem;
-  top: 30%;
+  top: 32.4%;
   margin-top: auto;
 }
 
@@ -171,12 +174,12 @@
 	display: none;
 	position: fixed;
 	background: white;
-	top: calc(var(--border)*4);
-	right: calc(var(--border)*4);
-	width: calc(var(--col) - var(--border)*8);
+	top: calc(var(--border)*6);
+	right: calc(var(--border)*6);
+	width: calc(var(--col) - var(--border)*12);
 	border: calc(var(--border)/2) solid var(--purple);
 	border-radius: 50%;
-	padding: calc(var(--col)/5);
+	padding: calc(var(--col)/6);
 	cursor: pointer;
 }
 
@@ -288,7 +291,7 @@
 }
 
 .col-with-padding {
-	padding-bottom: 2rem;
+	padding-bottom: 1.25rem;
 }
 
 .cols .col {
@@ -560,20 +563,20 @@
 
 .card-arrow {
 	position: absolute;
-	left: 20vw;
+	left: 7em;
 }
 
 .card-arrow svg {
-	width: 16vw;
+	width: calc(3em + 12vw);
 }
 
 .card-arrow.bottom {
-	bottom: -6.5vw;
+	bottom: max(calc((var(--col)*2 - 4em)* -1), -3.5em);
 	transform: rotate(-18deg);
 }
 
 .card-arrow.top {
-	top: -6.5vw;
+	top: max(calc((var(--col)*2 - 4em)* -1), -3.5em);
 	bottom: auto;
 	transform: scale(1, -1) rotate(-7deg);
 }
@@ -837,6 +840,14 @@ a:hover .project-card-image img {
 		height: calc(var(--col)*3);
 	}
 
+	.card-arrow.bottom {
+		bottom: max(calc((var(--col)*1.5 - 4em)* -1), -3.5em);
+	}
+
+	.card-arrow.top {
+		top: max(calc((var(--col)*1.5 - 4em)* -1), -3.5em);
+	}
+
 	.text-container,
 	.image-container {
 		padding: 0.733rem;
@@ -845,10 +856,6 @@ a:hover .project-card-image img {
 
 	.h1 {
 		font-size: 1.75rem;
-	}
-
-	.h2 {
-		font-size: 1.2rem;
 	}
 
 	.h3 {

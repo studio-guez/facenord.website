@@ -26,10 +26,10 @@
 					<ul v-if="project.tags.length" class="tag-list">
 						<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
 					</ul>
-					<div class="project-meta" v-if="project.current || project.date">
-						<span class="x-small purple">{{ project.blueprint.fields.current.options.find(o => o.value == project.current)?.text }}
+					<div class="project-meta x-small" v-if="project.current || project.date">
+						<span class="purple">{{ project.blueprint.fields.current.options.find(o => o.value == project.current)?.text }}
 						</span>
-						<span class="x-small grey" v-if="project.date"> — {{ project.date }}</span>
+						<span class="grey" v-if="project.date"> — {{ project.date }}</span>
 					</div>
 					<div class="text" v-html="project.description"></div>
 				</div>
