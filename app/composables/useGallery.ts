@@ -25,6 +25,8 @@ export const useGallery = function(elRef) {
 
 	      if (nextScrollPos) {
 	         scroller.scrollTo({ left: nextScrollPos - padding });
+	      } else {
+	      	scroller.scrollTo({ left: current.offsetLeft + current.offsetWidth})
 	      }
 	   }
 
@@ -32,6 +34,11 @@ export const useGallery = function(elRef) {
 	      const current = Array.from(items).reduce((prev, curr) => {
 	         return Math.abs(scroller.scrollLeft - prev.offsetLeft) < Math.abs(scroller.scrollLeft - curr.offsetLeft) ? prev : curr;
 	      });
+
+	     	 if (scroller.scrollLeft > current.offsetLeft) {
+	     	 	scroller.scrollTo({ left: current.offsetLeft - padding });
+	     	 	return;
+	     	 }
 
 	      const prevScrollPos = current?.previousElementSibling?.offsetLeft || 0;
 

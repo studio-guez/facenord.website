@@ -443,6 +443,8 @@
 	scroll-behavior: smooth;
 	-ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-padding-inline-start: .733rem;
+  scroll-padding-inline-end: .733rem;
 }
 
 .gallery-items::-webkit-scrollbar {
@@ -454,13 +456,12 @@
 	flex-shrink: 0;
 }
 
-.gallery-image .gallery-item:first-child {
-	padding-left: .733rem;
+.gallery-item:last-child {
+	scroll-snap-align: start end;
 }
 
 .gallery-image .gallery-items {
 	padding: .733rem;
-	padding-left: 0;
 	gap: 0.633rem;
 }
 
