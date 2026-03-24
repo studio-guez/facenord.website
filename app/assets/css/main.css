@@ -212,7 +212,7 @@
 	bottom: 0;
 	font-size: 0.5rem;
 	background: var(--beige);
-	padding: 0.22rem 0.733rem;
+	padding: 0.33rem 0.733rem;
 	z-index: 5;
 	display: flex;
 	justify-content: space-between;
@@ -220,8 +220,19 @@
 }
 
 .site-footer-links {
+	margin-top: 0.1rem;
 	display: flex;
 	gap: 1em;
+	padding-right: 0.1rem;
+	justify-content: flex-end;
+}
+
+.site-footer-links a {
+	text-decoration: underline;
+}
+
+.site-footer-links a:hover {
+	color: var(--purple);
 }
 
 /* Layout */

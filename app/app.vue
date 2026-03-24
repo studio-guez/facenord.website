@@ -2,7 +2,7 @@
   <div class="site-wrapper grid-background">
     <Header :menu="sortedMenu"/>
     <NuxtPage/>
-    <Footer :address="data.result?.footer_address" :links="data.result?.footer_links"/>
+    <Footer :address="data.result?.footer_address" :links="data.result?.footer_links" :email="data.result?.footer_email"/>
   </div>
 </template>
 
@@ -32,6 +32,7 @@
           }
         },
         footer_address: true,
+        footer_email: true,
         footer_links: {
           query: 'site.footer_links.toPages',
           select: {
