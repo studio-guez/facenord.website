@@ -64,8 +64,7 @@
 	const blocks = computed(() => {
 		return props.content.reduce((acc, current) => {
 			const lastBlock = acc[acc.length-1];
-
-			if ((current.type == 'text' && !current.content.title) || (current.type == 'image' && current.content.full_width == 'false')) {
+			if ((current.type == 'text' && !current.content.titre) || (current.type == 'image' && current.content.full_width == 'false')) {
 				if (lastBlock && lastBlock.type === 'text-group') {
       			lastBlock.content.push(current);
       		} else {
