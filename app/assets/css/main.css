@@ -109,6 +109,10 @@
 	color: var(--purple);
 }
 
+.text h4 > strong {
+	font-weight: normal;
+}
+
 .text ul li {
 	list-style-type: "↪";
 	padding-left: 0.3em;
