@@ -125,7 +125,9 @@
 }
 
 .text * + p,
-.text * + h4 {
+.text * + h4,
+.text * + ol,
+.text * + ul {
 	margin-top: 0.9em;
 }
 
