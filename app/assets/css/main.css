@@ -551,8 +551,8 @@
 
 .card {
 	flex-shrink: 0;
-	width: 10.25em;
-	min-height: 7em;
+	width: calc(8em + 4vw);
+	min-height: calc(6em + 3vw);
 	padding: .733rem;
 	border-radius: 2rem;
 	border: calc(var(--border)/2) solid black;
