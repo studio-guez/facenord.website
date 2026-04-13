@@ -948,6 +948,10 @@ a:hover .project-card-image img {
 	.site-logo {
 		top: 56%;
 	}
+
+	.gallery-item {
+		scroll-snap-align: center;
+	}
 }
 
 @media (max-width: 480px) {
