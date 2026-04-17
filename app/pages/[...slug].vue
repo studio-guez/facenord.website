@@ -19,6 +19,25 @@
 			</section>
 		</main>
 	</div>
+
+	<div v-else>
+		<Head>
+			<Title>{{ siteTitle }} | Erreur 404</Title>
+		</Head>
+		<main>
+			<header class="page-header">
+				<div class="page-header-title">
+					<h1 class="h1">Erreur 404</h1>
+					<div>La page demandée n'existe pas.</div>
+				</div>
+			</header>
+			<div class="section-footer">
+				<div class="small purple">
+					<NuxtLink :to="'/'">Retourner à l'accueil ↪</NuxtLink>
+				</div>
+			</div>
+		</main>
+	</div>
 </template>
 
 <script setup lang="ts">
