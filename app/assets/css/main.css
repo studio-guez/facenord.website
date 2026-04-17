@@ -233,11 +233,11 @@
 	justify-content: flex-end;
 }
 
-.site-footer-links a {
+.site-footer a {
 	text-decoration: underline;
 }
 
-.site-footer-links a:hover {
+.site-footer a:hover {
 	color: var(--purple);
 }
 
