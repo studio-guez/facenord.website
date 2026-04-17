@@ -5,7 +5,7 @@
 			<div class="align-right">
 				<a v-if="props.email" class="btn btn-small" :href="`mailto:${props.email}`">{{props.email}}</a>
 				<nav v-if="props.links.length" class="site-footer-links">
-					<NuxtLink v-for="link in props.links" :to="'/' + link.url">{{link.title}}</NuxtLink>
+					<NuxtLink target="_blank" v-for="link in props.links" :to="link.url">{{link.title}}</NuxtLink>
 				</nav>
 			</div>
 		</div>
