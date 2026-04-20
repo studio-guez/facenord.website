@@ -16,6 +16,9 @@ export default defineEventHandler(async (event) => {
         body,
     })
 
+    console.log('Target URL:', process.env.API_URL);
+    console.log('Auth Email:', process.env.API_AUTH_EMAIL);
+
     return dataApi
 })
 
