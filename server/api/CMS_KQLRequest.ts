@@ -7,6 +7,9 @@ export default defineEventHandler(async (event) => {
 
     const body = await readBody(event)
 
+    console.log('Sending Auth for:', email);
+    console.log('Generated Header:', `Basic ${authHeader}`);
+
     const dataApi = await $fetch(`${process.env.API_URL}/api/query`, {
         lazy: true,
         method: 'POST',
@@ -15,9 +18,6 @@ export default defineEventHandler(async (event) => {
         },
         body,
     })
-
-    console.log('Sending Auth for:', email);
-    console.log('Generated Header:', `Basic ${authHeader}`);
 
     if (!dataApi || dataApi.status === 'error') {
         return { result: [] }; // Returns an empty iterable so the frontend doesn't crash
