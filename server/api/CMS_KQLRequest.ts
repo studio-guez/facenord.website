@@ -16,6 +16,9 @@ export default defineEventHandler(async (event) => {
         body,
     })
 
+    console.log('Sending Auth for:', email);
+    console.log('Generated Header:', `Basic ${authHeader}`);
+
     if (!dataApi || dataApi.status === 'error') {
         return { result: [] }; // Returns an empty iterable so the frontend doesn't crash
     }
