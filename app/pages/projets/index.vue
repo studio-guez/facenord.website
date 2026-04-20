@@ -1,6 +1,6 @@
 <template>
 	<Head>
-   	<Title>{{ siteTitle }} | {{ data?.result.title }}</Title>
+   	<Title>{{ siteTitle }} | {{ page.title }}</Title>
 	</Head>
 	<main>
 		<header class="projects-header">
@@ -108,6 +108,14 @@
 			return projects.value.filter(p => p.tags.some(t => activeTags.value.map(t => t.id).includes(t.id)));
 		}
 	});
+
+	const page = computed(() => data.value?.result);
+
+	useSeoMeta({
+		ogTitle: `${siteTitle.value} | ${page.value.title}`,
+		description: page.value.caption || null,
+		ogDescription: page.value.caption || null,
+	})
 
 </script>
 

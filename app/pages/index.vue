@@ -1,9 +1,9 @@
 <template>
 	<Head>
-		<Title>{{ siteTitle }} | {{ data?.result.home.title }}</Title>
+		<Title>{{ siteTitle }} | {{ page.home.title }}</Title>
 	</Head>
 	<main>
-		<Blocks :content="data?.result.home.content || []" />
+		<Blocks :content="page.home.content || []" />
 	</main>
 </template>
 
@@ -30,9 +30,23 @@ const {data, status} = await useFetch('/api/CMS_KQLRequest', {
 					},
 					image_cover: 'page.image_cover.toFile'
 				}
+			},
+			seo: {
+				query: "site",
+				select: {
+					seo_description: true
+				}
 			}
 		}
 	}
 });
+
+const page = computed(() => data.value?.result);
+
+useSeoMeta({
+  ogTitle: `${siteTitle.value} | ${page.value.home.title}`,
+  description: page.value.seo.seo_description,
+  ogDescription: page.value.seo.seo_description,
+})
 
 </script>

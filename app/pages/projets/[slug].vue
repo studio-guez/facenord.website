@@ -104,4 +104,10 @@
 
 		return siblings.filter(p => p.tags?.some(t => currentTagIds.has(t.id)));
 	});
+
+	useSeoMeta({
+		ogTitle: `${siteTitle.value} | ${project.value.title}`,
+		description: project.value.caption || null,
+		ogDescription: project.value.caption || null,
+	})
 </script>

@@ -8,6 +8,13 @@
 
 <script setup lang="ts">
   const siteTitle = useState<string>('siteTitle');
+  const url = useRequestURL()
+
+  useSeoMeta({
+    ogImage: '/og-image.png',
+    ogUrl: url.href,
+    twitterCard: 'summary_large_image'
+  });
 
   const {data, status} = await useFetch('/api/CMS_KQLRequest', {
     method: 'POST',

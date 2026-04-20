@@ -58,6 +58,7 @@
 				title: 'page.title.smartypants',
 				slug: true,
 				show_title: 'page.show_title.toBool',
+				caption: true,
 				content: {
 					query: 'page.content.content.toResolvedBlocks',
 					select: BLOCKS_QUERY
@@ -72,4 +73,10 @@
 	});
 
 	const page = computed(() => data.value?.result);
+
+	useSeoMeta({
+		ogTitle: `${siteTitle.value} | ${page.value.title}`,
+		description: page.value.caption || null,
+		ogDescription: page.value.caption || null,
+	})
 </script>
