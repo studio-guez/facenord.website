@@ -233,11 +233,11 @@
 	justify-content: flex-end;
 }
 
-.site-footer a {
+.site-footer a:not(.btn) {
 	text-decoration: underline;
 }
 
-.site-footer a:hover {
+.site-footer a:not(.btn):hover {
 	color: var(--purple);
 }
 
