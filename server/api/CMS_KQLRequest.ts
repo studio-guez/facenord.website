@@ -6,10 +6,7 @@ export default defineEventHandler(async (event) => {
     const authHeader = Buffer.from(`${email}:${password}`, 'utf-8').toString('base64');
 
     const body = await readBody(event)
-
-    console.log('Sending Auth for:', email);
-    console.log('Generated Header:', `Basic ${authHeader}`);
-
+    
     const dataApi = await $fetch(`${process.env.API_URL}/api/query`, {
         lazy: true,
         method: 'POST',
