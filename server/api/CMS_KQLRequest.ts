@@ -16,8 +16,9 @@ export default defineEventHandler(async (event) => {
         body,
     })
 
-    console.log('Target URL:', process.env.API_URL);
-    console.log('Auth Email:', process.env.API_AUTH_EMAIL);
+    if (!dataApi || dataApi.status === 'error') {
+        return { result: [] }; // Returns an empty iterable so the frontend doesn't crash
+    }
 
     return dataApi
 })
