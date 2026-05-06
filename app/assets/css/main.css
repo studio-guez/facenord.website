@@ -225,12 +225,29 @@
 	align-items: center;
 }
 
+.footer-left {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+}
+
+.footer-address,
+.footer-sticker {
+	flex-shrink: 0;
+}
+
+.footer-sticker {
+	height: 3lh;
+	width: auto;
+}
+
 .site-footer-links {
+	font-size: 0.45rem;
 	margin-top: 0.1rem;
 	display: flex;
-	gap: 1em;
+	flex-direction: column;
 	padding-right: 0.1rem;
-	justify-content: flex-end;
+	align-items: flex-end;
 }
 
 .site-footer a:not(.btn) {
@@ -396,7 +413,7 @@
 }
 
 .btn.btn-small {
-	font-size: 0.5rem;
+	font-size: 0.45rem;
 }
 
 .btn-small {
@@ -886,6 +903,7 @@ a:hover .project-card-image img {
 	.site-footer-fixed {
 		font-size: 0.75rem;
 	}
+
 
 	.btn.btn-small {
 		font-size: 0.75rem;
