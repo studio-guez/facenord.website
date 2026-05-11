@@ -905,7 +905,8 @@ a:hover .project-card-image img {
 	}
 
 
-	.btn.btn-small {
+	.btn.btn-small,
+	.site-footer-links {
 		font-size: 0.75rem;
 	}
 
@@ -981,5 +982,9 @@ a:hover .project-card-image img {
 @media (max-width: 480px) {
 	:root {
 		font-size: 20px;
+	}
+
+	.footer-sticker {
+		display: none;
 	}
 }
