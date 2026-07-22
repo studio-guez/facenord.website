@@ -1,5 +1,5 @@
 <template>
-	<section v-if="props.block.content.titre || embedUrl" class="section-video">
+	<section v-if="props.block.content.titre || embed" class="section-video">
 		<header v-if="props.block.content.titre" class="section-header">
 			<h2 class="h2 purple" v-html="props.block.content.titre"></h2>
 		</header>
