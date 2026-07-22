@@ -21,6 +21,4 @@
 		email?: string
 		links?: array
 	}>();
-
-	console.log(props.links);
 </script>
