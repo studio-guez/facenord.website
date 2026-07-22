@@ -537,7 +537,9 @@
 		overflow: hidden;
 	}
 
-	.video-container iframe {
+	.video-container iframe,
+	.video-container video {
+		display: block;
 		position: absolute;
 		top: 0;
 		left: 0;
