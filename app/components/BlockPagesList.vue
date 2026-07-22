@@ -5,7 +5,7 @@
 	<div class="gallery gallery-card" ref="gallery">
 		<button class="gallery-prev" v-html="IconPrev"></button>
 		<ul class="gallery-items">
-			<li v-for="project in props.projects" class="gallery-item project-card project-card-small">
+			<li v-for="project in props.projects" :key="project.title" class="gallery-item project-card project-card-small">
 				<NuxtLink :to="'/' + project.url">
 					<div v-if="project.image_cover" class="col project-card-image">
 						<Image :image="project.image_cover" />
@@ -13,10 +13,10 @@
 					<div class="col project-card-content">
 						<header class="project-card-header">
 							<ul v-if="project.tags.length" class="tag-list">
-								<li v-for="tag in project.tags" class="tag">{{ tag.title }}</li>
+								<li v-for="tag in project.tags" :key="tag.title" class="tag">{{ tag.title }}</li>
 							</ul>
 							<h3 class="h3">{{ project.title }}</h3>
-							<NuxtLink class="link small" :to="'/' + project.url">Découvrir ↪</NuxtLink>
+							<span class="link small" :to="'/' + project.url">Découvrir ↪</span>
 						</header>
 						<div class="text small" v-html="project.caption"></div>
 					</div>
